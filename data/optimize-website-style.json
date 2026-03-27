@@ -21,7 +21,7 @@
     "⚡ 用户一句话，自动完成全部流程"
   ],
   "workflow": [
-    "用户说：\"帮我优化网站风格\"",
+    "用户说: \"帮我优化网站风格\"",
     "技能自动调用 web-search 搜索当前主流设计风格",
     "整理出几种常见风格给用户选择",
     "用户选好风格，技能自动拼装提问给 shadcn-ui",
@@ -33,7 +33,7 @@
       "question": "Q: 为什么我想要不同风格，第一次只给了纯色块，不满意？",
       "originalProblem": "用户想要展示不同网站风格，不知道怎么给 AI 说清楚，一开始只放了颜色块，用户看不到整体效果",
       "failedAttempt": "只放几个纯色块代表不同颜色主题，用户无法想象整体网站应用后是什么效果，不满意",
-      "solution": "用户需要的是整体风格推荐，不是单纯颜色。正确做法：推荐完整风格概念 + 给可复制的配置代码 + 说明这个风格适合什么类型网站，让用户清楚选择。\n\n```javascript\n// 极简蓝色（默认风格）- 专业清爽，适合大多数网站\nexport default {\n  theme: {\n    colors: {\n      primary: colors.blue[600],\n      background: '#ffffff',\n      foreground: '#000000',\n    }\n  }\n}\n```\n\n你选好风格后，直接复制配置覆盖就行，技能会自动指导 AI 改造",
+      "solution": "用户需要的是整体风格推荐，不是单纯颜色。正确做法：推荐完整风格概念 + 给可复制的配置代码 + 说明这个风格适合什么类型网站，让用户清楚选择。\n```javascript\n// 极简蓝色（默认风格）- 专业清爽，适合大多数网站\nexport default {\n  theme: {\n    colors: {\n      primary: colors.blue[600],\n      background: '#ffffff',\n      foreground: '#000000',\n    }\n  }\n}\n```\n\n你选好风格后，直接复制配置覆盖就行，技能会自动指导 AI 改造",
       "conclusion": "用户要的是整体风格方案，不是单纯色块预览。给完整可复制代码 + 使用场景说明，用户能更好选择"
     },
     {
@@ -42,13 +42,6 @@
       "failedAttempt": "只告诉用户重新安装，没说根本原因",
       "solution": "这是因为 tsconfig.json 没有配置 path alias，添加这段配置就好了：\n```json\n// tsconfig.json\n\"compilerOptions\": {\n  \"paths\": {\n    \"@/*\": [\"./*\"]\n  }\n}\n```\n重启 dev server 就能用了",
       "conclusion": "这是 shadcn-ui 默认配置要求，新手容易踩坑，提前说清楚解决方法就不用浪费时间"
-    },
-    {
-      "question": "Q: 官方预览图片GitHub 加载不出来怎么办？",
-      "originalProblem": "国内网络访问 GitHub 图片经常超时",
-      "failedAttempt": "继续链接图片，用户打不开",
-      "solution": "直接建议用户访问官方网站预览 https://ui.shadcn.com/ ，这里能正常打开，不用看 GitHub 图片",
-      "conclusion": "国外资源国内访问不稳定，提前给替代方案，用户不用卡住"
     }
   ],
   "compositeUsage": {
@@ -67,7 +60,7 @@
         "content": "用户选择喜欢的风格"
       },
       {
-        "step": "4. "Auto",
+        "step": "4. Auto",
         "content": "自动调用 shadcn-ui 技能完成改造"
       }
     ],
