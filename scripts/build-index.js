@@ -43,5 +43,8 @@ const index = {
 const outputPath = path.join(publicDir, 'index.json');
 fs.writeFileSync(outputPath, JSON.stringify(index, null, 2));
 
+// 也复制到根目录
+fs.writeFileSync(path.join(__dirname, '..', 'index.json'), JSON.stringify(index, null, 2));
+
 console.log(`✅ Built index.json with ${skills.length} skills`);
 console.log(`📄 Output: ${outputPath}`);

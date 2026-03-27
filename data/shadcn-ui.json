@@ -1,0 +1,32 @@
+{
+  "name": "shadcn-ui",
+  "description": "基于 Tailwind CSS 的现代化 React UI 组件库，提供开箱即用的高质量组件，支持自定义主题",
+  "descriptionEn": "Modern React UI component library based on Tailwind CSS, provides high-quality out-of-the-box components with customizable theme",
+  "author": "shadcn",
+  "repository": "https://github.com/shadcn/ui",
+  "homepage": "https://ui.shadcn.com/",
+  "version": "latest",
+  "category": "frontend",
+  "tier": "free",
+  "verified": true,
+  "stars": 65000,
+  "license": "MIT",
+  "tags": ["ui", "tailwind", "react", "components", "frontend"],
+  "features": [
+    "🚀 基于 Tailwind CSS，样式自定义非常灵活",
+    "🎨 支持深色模式和自定义主题",
+    "📦 组件可单独复制使用，无需安装整个库",
+    "🎯 支持 TypeScript，类型完整",
+    "♿ 符合无障碍设计标准"
+  ],
+  "useCases": [
+    "快速搭建现代化 React 项目页面",
+    "需要美观可定制 UI 组件",
+    "基于 Tailwind CSS 开发",
+    "全栈项目需要高质量前端组件"
+  ],
+  "requirements": ["React", "Tailwind CSS"],
+  "bestPractices": "创建新项目时，可以使用 `npx create-next-app@latest` 然后按照官方文档安装组件，推荐配合 Tailwind CSS v3 使用",
+  "example": "// 使用按钮组件\nimport { Button } from \"@/components/ui/button\"\n\n<Button onClick={() => console.log('Clicked')}>\n  Click me\n</Button>",
+  "createdAt": "2026-03-27T00:00:00Z"
+}

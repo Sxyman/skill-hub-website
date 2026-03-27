@@ -202,6 +202,20 @@
       });
     }
 
+    function copyToClipboardRaw(text, button) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('已复制到剪贴板！');
+        if (button) {
+          button.classList.add('copied');
+          setTimeout(() => {
+            button.classList.remove('copied');
+          }, 2000);
+        }
+      }).catch(() => {
+        showToast('复制失败，请手动复制');
+      });
+    }
+
     function showToast(message) {
       const toast = document.getElementById('toast');
       toast.textContent = message;
@@ -230,6 +244,78 @@
           
           const installCommand = `npx skills add ${window.location.origin} -s ${skill.name} -g -y`;
           
+          let extraInfo = '';
+          // 来源信息
+          if (skill.repository) {
+            extraInfo += `
+              <div class="flex items-center text-sm text-gray-500 mb-3 flex-wrap gap-4">
+                <span>⭐ GitHub: <a href="${skill.repository}" target="_blank" class="text-primary hover:underline">${skill.repository}</a></span>
+                ${skill.stars ? `<span>⭐ ${skill.stars.toLocaleString()} stars</span>` : ''}
+                ${skill.author ? `<span>👤 Author: ${skill.author}</span>` : ''}
+                ${skill.license ? `<span>📄 License: ${skill.license}</span>` : ''}
+              </div>
+            `;
+          }
+          
+          // 功能特性
+          if (skill.features && skill.features.length > 0) {
+            extraInfo += `
+              <div class="mb-3">
+                <div class="text-sm font-medium mb-1">✨ 主要特性：</div>
+              <ul class="ml-4 list-disc text-gray-700">
+                ${skill.features.map(f => `<li>${f}</li>`).join('')}
+              </ul>
+              </div>
+            `;
+          }
+          
+          // 适用场景
+          if (skill.useCases && skill.useCases.length > 0) {
+            extraInfo += `
+              <div class="mb-3">
+              <div class="text-sm font-medium mb-1">🎯 适用场景：</div>
+              <ul class="ml-4 list-disc text-gray-700">
+                ${skill.useCases.map(u => `<li>${u}</li>`).join('')}
+              </ul>
+            </div>
+            `;
+          }
+          
+          // 最佳实践
+          if (skill.bestPractices) {
+            extraInfo += `
+              <div class="mb-3 p-3 bg-blue-50 rounded-lg">
+                <div class="text-sm font-medium mb-1">💡 最佳实践：</div>
+                <p class="text-gray-700 text-sm">${skill.bestPractices}</p>
+              </div>
+            `;
+          }
+          
+          // 示例代码
+          if (skill.example) {
+            // 转义示例代码中的引号
+            const escapedExample = skill.example.replace(/`/g, '\\`').replace(/'/g, '\\\'');
+            extraInfo += `
+              <div class="mb-3">
+                <div class="text-sm font-medium mb-1">📝 使用示例：</div>
+                <div class="code-block">
+                  <button class="copy-icon-btn" onclick="copyToClipboardRaw(\`${escapedExample}\`, this)" title="复制">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                  </button>
+                  <code>${escapedExample}</code>
+                </div>
+              </div>
+            `;
+          }
+          
+          // 手动安装信息
+          const manualInstall = skill.repository ? `
+            <div class="mt-2 text-xs text-gray-500">或者手动克隆：<code class="bg-gray-100 px-1 rounded">git clone ${skill.repository}</code></div>
+          ` : '';
+          
           div.innerHTML = `
             <div class="flex justify-between items-start mb-3 flex-wrap gap-2">
               <span class="text-xl font-bold">${skill.name}</span>
@@ -239,20 +325,22 @@
               <p class="text-gray-800 mb-1">${skill.description}</p>
               ${skill.descriptionEn ? `<p class="text-gray-500 text-sm">${skill.descriptionEn}</p>` : ''}
             </div>
-            <div class="mb-4">
+            ${extraInfo}
+            <div class="mb-2">
               ${tagsHtml}
             </div>
             <div>
-              <div class="text-sm font-medium mb-2">一键安装：</div>
-              <div class="code-block">
-                <button class="copy-icon-btn" onclick="copyToClipboard('install-${skill.name}', this)" title="复制">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                  </svg>
-                </button>
-                <code id="install-${skill.name}">${installCommand}</code>
-              </div>
+              <div class="text-sm font-medium mb-2">一键安装（OpenClaw / ArkClaw）：</div>
+                <div class="code-block">
+                  <button class="copy-icon-btn" onclick="copyToClipboard('install-${skill.name}', this)" title="复制">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                  </button>
+                  <code id="install-${skill.name}">${installCommand}</code>
+                </div>
+                ${manualInstall}
             </div>
           `;
           container.appendChild(div);
