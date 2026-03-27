@@ -1,11 +1,12 @@
 {
   "version": 1,
-  "updatedAt": "2026-03-27T02:26:21.771Z",
+  "updatedAt": "2026-03-27T03:46:24.177Z",
   "skills": [
     {
       "name": "feishu-batch-ops",
       "description": "飞书批量操作工具 - 批量导入通讯录、批量创建文档、批量处理日程",
-      "author": "your-name",
+      "descriptionEn": "Feishu batch operations tool - batch import contacts, batch create docs, batch process calendar events",
+      "author": "Sxyman",
       "version": "1.0.0",
       "category": "feishu",
       "tier": "premium",
@@ -15,8 +16,8 @@
         "batch",
         "automation"
       ],
-      "repository": "https://your-domain.com/repos/feishu-batch-ops.git",
-      "homepage": "https://your-domain.com/skills/feishu-batch-ops",
+      "repository": "https://github.com/Sxyman/skill-hub-website",
+      "homepage": "https://Sxyman.github.io/skill-hub-website/",
       "license": "proprietary",
       "requirements": null,
       "createdAt": "2026-03-27T00:00:00Z",
@@ -24,11 +25,12 @@
         "type": "subscription",
         "tier": "premium"
       },
-      "downloadUrl": "https://your-domain.com/repos/feishu-batch-ops.git"
+      "downloadUrl": "https://github.com/Sxyman/skill-hub-website"
     },
     {
       "name": "image-generate",
-      "description": "Generate images using AI model, supports direct preview sending to chat",
+      "description": "使用 AI 模型生成图片，支持直接发送预览到聊天会话",
+      "descriptionEn": "Generate images using AI model, supports direct preview sending to chat",
       "author": "openclaw",
       "version": "1.0.0",
       "category": "generation",
@@ -47,7 +49,8 @@
     },
     {
       "name": "smart-ocr",
-      "description": "Extract text from images and scanned documents using PaddleOCR - supports 100+ languages",
+      "description": "使用 PaddleOCR 从图片和扫描文档中提取文字，支持 100+ 种语言",
+      "descriptionEn": "Extract text from images and scanned documents using PaddleOCR - supports 100+ languages",
       "author": "openclaw",
       "version": "1.0.0",
       "category": "utility",
@@ -66,7 +69,8 @@
     },
     {
       "name": "web-search",
-      "description": "Privacy-respecting metasearch using your local SearXNG instance. Search the web, images, news, and more without external API dependencies.",
+      "description": "使用本地 SearXNG 实例进行隐私保护的元搜索，可以搜索网页、图片、新闻等，无需外部 API 依赖",
+      "descriptionEn": "Privacy-respecting metasearch using your local SearXNG instance. Search the web, images, news, and more without external API dependencies.",
       "author": "openclaw",
       "version": "1.0.0",
       "category": "search",

@@ -1,6 +1,7 @@
 {
   "name": "image-generate",
-  "description": "Generate images using AI model, supports direct preview sending to chat",
+  "description": "使用 AI 模型生成图片，支持直接发送预览到聊天会话",
+  "descriptionEn": "Generate images using AI model, supports direct preview sending to chat",
   "author": "openclaw",
   "version": "1.0.0",
   "category": "generation",

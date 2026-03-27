@@ -1,6 +1,7 @@
 {
   "name": "smart-ocr",
-  "description": "Extract text from images and scanned documents using PaddleOCR - supports 100+ languages",
+  "description": "使用 PaddleOCR 从图片和扫描文档中提取文字，支持 100+ 种语言",
+  "descriptionEn": "Extract text from images and scanned documents using PaddleOCR - supports 100+ languages",
   "author": "openclaw",
   "version": "1.0.0",
   "category": "utility",

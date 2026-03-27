@@ -11,7 +11,7 @@
       padding: 0;
     }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont,, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
       line-height: 1.6;
       color: #333;
       max-width: 1200px;
@@ -45,6 +45,7 @@
       padding: 30px;
       text-align: center;
       transition: all 0.3s;
+      cursor: pointer;
     }
     .price-card:hover {
       border-color: #3498db;
@@ -78,6 +79,9 @@
       border-radius: 5px;
       text-decoration: none;
       font-weight: bold;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
     }
     .btn-free {
       background: #ecf0f1;
@@ -86,6 +90,19 @@
     .btn-premium {
       background: #f39c12;
       color: white;
+    }
+    .btn-copy {
+      background: #3498db;
+      color: white;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+    .btn-copy:hover {
+      background: #2980b9;
+    }
+    .btn-copy.copied {
+      background: #2ecc71;
     }
     .install-info {
       background: #f8f9fa;
@@ -102,12 +119,14 @@
       border-radius: 3px;
       font-family: monospace;
     }
-    pre {
+    .code-block {
       background: #2c3e50;
       color: #ecf0f1;
       padding: 15px;
       border-radius: 5px;
       overflow-x: auto;
+      position: relative;
+      margin: 15px 0;
     }
     .skills-list {
       margin: 40px 0;
@@ -117,6 +136,7 @@
       border-radius: 8px;
       padding: 20px;
       margin-bottom: 15px;
+      transition: border-color 0.3s;
     }
     .skill-item:hover {
       border-color: #3498db;
@@ -126,6 +146,8 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     .skill-name {
       font-size: 1.3rem;
@@ -146,10 +168,6 @@
       background: #e74c3c;
       color: white;
     }
-    .badge-member {
-      background: #f39c12;
-      color: white;
-    }
     .tag {
       display: inline-block;
       background: #ecf0f1;
@@ -159,6 +177,25 @@
       margin-right: 5px;
       margin-top: 5px;
     }
+    .skill-description {
+      margin: 10px 0;
+    }
+    .skill-description .en {
+      color: #7f8c8d;
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+    .install-actions {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .install-command {
+      flex: 1;
+      min-width: 250px;
+    }
     footer {
       text-align: center;
       padding: 40px 0;
@@ -166,35 +203,120 @@
       margin-top: 60px;
       color: #7f8c8d;
     }
-    .qr-code {
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #7f8c8d;
+    }
+    .modal-close:hover {
+      color: #333;
+    }
+    .modal h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .qr-container {
       text-align: center;
       margin: 20px 0;
     }
-    .qr-code img {
-      max-width: 200px;
+    .qr-container img {
+      max-width: 250px;
       border: 1px solid #eee;
       padding: 10px;
+      border-radius: 10px;
+    }
+    .qr-placeholder {
+      border: 2px dashed #ddd;
+      border-radius: 10px;
+      padding: 50px 20px;
+      text-align: center;
+      color: #999;
+    }
+    .payment-info {
+      text-align: center;
+      margin-top: 20px;
+      line-height: 1.8;
+    }
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 5px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 1001;
+    }
+    .toast.show {
+      opacity: 1;
+    }
+    .how-it-works {
+      background: #e8f4f8;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 40px 0;
+    }
+    .how-it-works h2 {
+      margin-bottom: 15px;
+    }
+    .how-it-works ol {
+      margin-left: 20px;
+    }
+    .how-it-works li {
+      padding: 8px 0;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>🍱 SkillHub</h1>
-    <p class="subtitle">精选 OpenClaw 技能仓库，让你的 AI 助理更强大</p>
+    <p class="subtitle">精选 OpenClaw / ArkClaw 技能仓库，让你的 AI 助理更强大</p>
   </header>
 
   <section class="pricing">
-    <div class="price-card">
+    <div class="price-card" onclick="scrollToInstall()">
       <div class="price-tier">免费</div>
       <div class="price">¥0</div>
       <ul class="features">
         <li>✓ 下载所有免费技能</li>
-        <li>✓ 官方 OpenClaw 自动发现</li>
-        <li>✓ 基础更新</li>
+        <li>✓ OpenClaw 自动发现</li>
+        <li>✓ 永久更新</li>
       </ul>
       <a href="#install" class="btn btn-free">开始使用</a>
     </div>
-    <div class="price-card premium">
+    <div class="price-card premium" onclick="openModal()">
       <div class="price-tier">会员</div>
       <div class="price">¥19<span style="font-size: 1rem;">/月</span></div>
       <ul class="features">
@@ -204,16 +326,32 @@
         <li>✓ 技能使用答疑</li>
         <li>✓ 技能定制优先处理</li>
       </ul>
-      <a href="#subscribe" class="btn btn-premium">立即订阅</a>
+      <button class="btn btn-premium" onclick="openModal()">立即订阅</button>
     </div>
+  </section>
+
+  <section class="how-it-works">
+    <h2>📖 如何使用</h2>
+    <ol>
+      <li>OpenClaw / ArkClaw 用户直接在终端添加源，就能搜索发现技能</li>
+      <li>免费技能可以直接安装，会员技能需要订阅会员才能使用</li>
+      <li>订阅后扫码付款，联系作者获取会员权限，即可安装会员技能</li>
+      <li>添加源后，每次搜索都会自动从这里发现新技能，不需要再来网站</li>
+    </ol>
   </section>
 
   <section class="install-info" id="install">
     <h2>🚀 一键添加到你的 OpenClaw</h2>
     <p>在你的终端执行以下命令，即可添加这个 Skill 源：</p>
-    <pre>npx skills source add https://Sxyman.github.io/skill-hub-website/index.json</pre>
+    <div class="code-block">
+      <code id="add-command">npx skills source add https://Sxyman.github.io/skill-hub-website/index.json</code>
+      <button class="btn btn-copy" onclick="copyToClipboard('add-command', this)">一键复制</button>
+    </div>
     <p>添加后，你就可以在 OpenClaw 中直接搜索这里的技能了：</p>
-    <pre>npx skills find [关键词]</pre>
+    <div class="code-block">
+      <code>npx skills find [关键词]</code>
+      <button class="btn btn-copy" onclick="copyToClipboard(document.querySelectorAll('.code-block code')[1], this)">一键复制</button>
+    </div>
   </section>
 
   <section class="skills-list">
@@ -221,21 +359,76 @@
     <div id="skills-container"></div>
   </section>
 
-  <section class="install-info" id="subscribe">
-    <h2>💳 订阅会员</h2>
-    <p>扫码订阅会员，获取全部精选技能：</p>
-    <div class="qr-code">
-      <!-- 在这里替换成你的收款码 -->
-      <p>[请在此处放置你的收款二维码]</p>
-    </div>
-    <p>订阅后请联系我获取会员权限，你就可以下载所有会员专享技能了。</p>
-  </section>
-
   <footer>
-    <p>© <span id="year"></span> SkillHub. All rights reserved.</p>
+    <p>© <span id="year"></span> SkillHub. Powered by OpenClaw.</p>
   </footer>
 
+  <!-- Modal for QR Code -->
+  <div class="modal-overlay" id="qr-modal" onclick="closeModal(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h2>💳 订阅会员</h2>
+      <p>扫码支付 ¥19/月，获取所有会员专享技能：</p>
+      <div class="qr-container">
+        <!-- 在这里替换成你的收款二维码 -->
+        <div class="qr-placeholder">
+          [请在此处放置你的收款二维码]
+        </div>
+      </div>
+      <div class="payment-info">
+        <p>支付完成后，请联系作者开通权限</p>
+        <p>开通后你就可以安装所有会员专享技能了</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">已复制到剪贴板！</div>
+
   <script>
+    // Modal functions
+    function openModal() {
+      document.getElementById('qr-modal').classList.add('active');
+    }
+    function closeModal(e) {
+      if (e && e.target.id !== 'qr-modal') return;
+      document.getElementById('qr-modal').classList.remove('active');
+    }
+    function scrollToInstall() {
+      document.getElementById('install').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Copy to clipboard
+    function copyToClipboard(element, button) {
+      let text = '';
+      if (typeof element === 'string') {
+        text = document.getElementById(element).textContent;
+      } else {
+        text = element.textContent;
+      }
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('已复制到剪贴板！');
+        if (button) {
+          button.classList.add('copied');
+          button.textContent = '已复制';
+          setTimeout(() => {
+            button.classList.remove('copied');
+            button.textContent = '一键复制';
+          }, 2000);
+        }
+      }).catch(() => {
+        showToast('复制失败，请手动复制');
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+
     // 动态加载技能列表
     fetch('./index.json')
       .then(res => res.json())
@@ -251,15 +444,39 @@
           skill.tags.forEach(tag => {
             tagsHtml += `<span class="tag">${tag}</span>`;
           });
+
+          // 提取中英文描述
+          let descCn = skill.description;
+          let descEn = '';
+          if (skill.descriptionEn) {
+            descCn = skill.description;
+            descEn = skill.descriptionEn;
+          }
+          
+          // 安装命令
+          const installCommand = `npx skills add ${window.location.origin} -s ${skill.name} -g -y`;
           
           div.innerHTML = `
             <div class="skill-header">
               <span class="skill-name">${skill.name}</span>
               <span class="badge ${badgeClass}">${badgeText}</span>
             </div>
-            <p>${skill.description}</p>
+            <div class="skill-description">
+              <p class="cn">${descCn}</p>
+              ${descEn ? `<p class="en">${descEn}</p>` : ''}
+            </div>
             <div>
               ${tagsHtml}
+            </div>
+            <div class="install-actions">
+              <div class="install-command">
+                <div>命令行安装：</div>
+                <div class="code-block">
+                  <code id="install-${skill.name}">${installCommand}</code>
+                  <button class="btn btn-copy" onclick="copyToClipboard('install-${skill.name}', this)">一键复制</button>
+                </div>
+              </div>
+              ${skill.tier === 'premium' ? `<button class="btn btn-premium" onclick="openModal()">需要会员订阅</button>` : ''}
             </div>
           `;
           container.appendChild(div);
@@ -271,6 +488,20 @@
 
     // 当前年份
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 点击蒙层关闭模态框
+    document.getElementById('qr-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    // ESC 关闭模态框
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
   </script>
 </body>
 </html>
