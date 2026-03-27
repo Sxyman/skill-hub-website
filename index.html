@@ -291,6 +291,42 @@
             `;
           }
           
+          // 主题预览
+          if (skill.themes && skill.themes.length > 0) {
+            extraInfo += `
+              <div class="mb-3">
+                <div class="text-sm font-medium mb-2">🎨 支持主题风格：</div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            `;
+            skill.themes.forEach(theme => {
+              let colorStyle = `background-color: ${theme.colors.primary === 'blue' ? '#3b82f6' : theme.colors.primary === 'orange' ? '#f97316' : theme.colors.primary === 'green' ? '#22c55e' : theme.colors.primary};`;
+              extraInfo += `
+                <div class="border rounded-lg overflow-hidden">
+                  <div class="h-8" style="${colorStyle}"></div>
+                  <div class="p-2 text-center">
+                    <div class="font-bold text-sm">${theme.name}</div>
+                    <div class="text-xs text-gray-500">${theme.description}</div>
+                  </div>
+                </div>
+              `;
+            });
+            extraInfo += `
+                </div>
+              </div>
+            `;
+            // 如果有预览图
+            if (skill.themes[0].preview) {
+              extraInfo += `
+                <div class="mb-3">
+                  <div class="text-sm font-medium mb-2">🖼️ 官方预览：</div>
+                  <a href="${skill.repository}" target="_blank" class="block border rounded-lg overflow-hidden">
+                    <img src="${skill.themes[0].preview}" alt="Preview" class="w-full">
+                  </a>
+                </div>
+              `;
+            }
+          }
+          
           // 示例代码
           if (skill.example) {
             // 转义示例代码中的引号

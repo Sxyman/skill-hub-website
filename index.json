@@ -1,54 +1,11 @@
 {
   "version": 1,
-  "updatedAt": "2026-03-27T07:17:23.712Z",
+  "updatedAt": "2026-03-27T07:42:32.926Z",
   "skills": [
     {
-      "name": "feishu-batch-ops",
-      "description": "飞书批量操作工具 - 批量导入通讯录、批量创建文档、批量处理日程，需要定制联系作者",
-      "descriptionEn": "Feishu batch operations tool - batch import contacts, create docs, process calendar. Contact author for customization",
-      "author": "Sxyman",
-      "version": "1.0.0",
-      "category": "feishu",
-      "tier": "free",
-      "verified": false,
-      "tags": [
-        "feishu",
-        "lark",
-        "batch",
-        "automation"
-      ],
-      "repository": "https://github.com/Sxyman/skill-hub-website",
-      "homepage": "https://Sxyman.github.io/skill-hub-website/",
-      "license": "MIT",
-      "requirements": null,
-      "createdAt": "2026-03-27T00:00:00Z",
-      "downloadUrl": "https://github.com/Sxyman/skill-hub-website"
-    },
-    {
-      "name": "image-generate",
-      "description": "使用 AI 模型生成图片，支持直接发送预览到聊天会话，开箱即用",
-      "descriptionEn": "Generate images using AI model, supports direct preview sending to chat, ready to use",
-      "author": "openclaw",
-      "version": "1.0.0",
-      "category": "generation",
-      "tier": "free",
-      "verified": true,
-      "tags": [
-        "image",
-        "ai",
-        "generation"
-      ],
-      "repository": "https://github.com/openclaw/openclaw",
-      "homepage": "https://github.com/openclaw/openclaw",
-      "license": "Apache-2.0",
-      "requirements": null,
-      "createdAt": "2026-03-27T00:00:00Z",
-      "downloadUrl": "https://github.com/openclaw/openclaw"
-    },
-    {
       "name": "shadcn-ui",
-      "description": "基于 Tailwind CSS 的现代化 React UI 组件库，提供开箱即用的高质量组件，支持自定义主题",
-      "descriptionEn": "Modern React UI component library based on Tailwind CSS, provides high-quality out-of-the-box components with customizable theme",
+      "description": "基于 Tailwind CSS 的现代化 React UI 组件库，提供开箱即用的高质量组件，支持深度自定义主题",
+      "descriptionEn": "Modern React UI component library based on Tailwind CSS, provides high-quality out-of-the-box components with deep theme customization",
       "author": "shadcn",
       "repository": "https://github.com/shadcn/ui",
       "homepage": "https://ui.shadcn.com/",
@@ -63,11 +20,12 @@
         "tailwind",
         "react",
         "components",
-        "frontend"
+        "frontend",
+        "theme"
       ],
       "features": [
         "🚀 基于 Tailwind CSS，样式自定义非常灵活",
-        "🎨 支持深色模式和自定义主题",
+        "🎨 支持深色模式和完全自定义主题",
         "📦 组件可单独复制使用，无需安装整个库",
         "🎯 支持 TypeScript，类型完整",
         "♿ 符合无障碍设计标准"
@@ -76,59 +34,58 @@
         "快速搭建现代化 React 项目页面",
         "需要美观可定制 UI 组件",
         "基于 Tailwind CSS 开发",
-        "全栈项目需要高质量前端组件"
+        "全栈项目需要高质量前端组件",
+        "需要统一设计语言的项目"
       ],
       "requirements": [
-        "React",
-        "Tailwind CSS"
+        "React 18+",
+        "Tailwind CSS v3"
       ],
-      "bestPractices": "创建新项目时，可以使用 `npx create-next-app@latest` 然后按照官方文档安装组件，推荐配合 Tailwind CSS v3 使用",
-      "example": "// 使用按钮组件\nimport { Button } from \"@/components/ui/button\"\n\n<Button onClick={() => console.log('Clicked')}>\n  Click me\n</Button>",
+      "bestPractices": "创建新项目时使用 `npx create-next-app@latest`，然后运行 `npx shadcn-ui@latest init` 初始化，按照向导选择你喜欢的样式和颜色",
+      "themes": [
+        {
+          "name": "Default",
+          "description": "默认蓝色主题，清新专业",
+          "colors": {
+            "background": "white",
+            "foreground": "black",
+            "primary": "blue"
+          },
+          "preview": "https://ui.shadcn.com/opengraph-image.png"
+        },
+        {
+          "name": "Dark",
+          "description": "深色模式，护眼舒适",
+          "colors": {
+            "background": "black",
+            "foreground": "white",
+            "primary": "blue"
+          },
+          "preview": "https://github.com/shadcn-ui/ui/blob/main/apps/www/public/og-dark.jpg?raw=true"
+        },
+        {
+          "name": "Orange",
+          "description": "温暖橙色，活泼热情",
+          "colors": {
+            "background": "white",
+            "foreground": "black",
+            "primary": "orange"
+          }
+        },
+        {
+          "name": "Green",
+          "description": "自然绿色，清新宁静",
+          "colors": {
+            "background": "white",
+            "foreground": "black",
+            "primary": "green"
+          }
+        }
+      ],
+      "example": "// 1. 初始化\n// npx shadcn-ui@latest init\n\n// 2. 添加按钮组件\n// npx shadcn-ui@latest add button\n\n// 3. 使用\nimport { Button } from \"@/components/ui/button\"\n\nexport default function Home() {\n  return (\n    <Button onClick={() => console.log('Clicked')}>\n      Click me\n    </Button>\n  )\n}",
       "createdAt": "2026-03-27T00:00:00Z",
       "downloadUrl": "https://github.com/shadcn/ui"
-    },
-    {
-      "name": "smart-ocr",
-      "description": "使用 PaddleOCR 从图片和扫描文档中提取文字，支持 100+ 种语言，实测可用",
-      "descriptionEn": "Extract text from images and scanned documents using PaddleOCR - supports 100+ languages, tested and working",
-      "author": "openclaw",
-      "version": "1.0.0",
-      "category": "utility",
-      "tier": "free",
-      "verified": true,
-      "tags": [
-        "ocr",
-        "text-extraction",
-        "image"
-      ],
-      "repository": "https://github.com/openclaw/openclaw",
-      "homepage": "https://github.com/openclaw/openclaw",
-      "license": "Apache-2.0",
-      "requirements": "paddleocr",
-      "createdAt": "2026-03-27T00:00:00Z",
-      "downloadUrl": "https://github.com/openclaw/openclaw"
-    },
-    {
-      "name": "web-search",
-      "description": "使用本地 SearXNG 实例进行隐私保护的元搜索，可以搜索网页、图片、新闻等，无需外部 API 依赖",
-      "descriptionEn": "Privacy-respecting metasearch using your local SearXNG instance. Search the web, images, news, and more without external API dependencies.",
-      "author": "openclaw",
-      "version": "1.0.0",
-      "category": "search",
-      "tier": "free",
-      "verified": true,
-      "tags": [
-        "search",
-        "web",
-        "privacy"
-      ],
-      "repository": "https://github.com/openclaw/openclaw",
-      "homepage": "https://github.com/openclaw/openclaw",
-      "license": "Apache-2.0",
-      "requirements": null,
-      "createdAt": "2026-03-27T00:00:00Z",
-      "downloadUrl": "https://github.com/openclaw/openclaw"
     }
   ],
-  "total": 5
+  "total": 1
 }
