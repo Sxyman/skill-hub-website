@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "build": "node scripts/build-index.js",
-    "dev": "node scripts/build-index.js && python3 -m http.server 8000"
+    "dev": "node scripts/build-index.js && node server.js",
+    "start": "node server.js"
   },
-  "keywords": [
-    "openclaw",
-    "skillhub",
-    "skills"
-  ],
+  "keywords": ["openclaw", "skillhub", "skills"],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }

@@ -4,161 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SkillHub - 精选 OpenClaw 技能仓库</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#f39c12',
+            secondary: '#3498db',
+            dark: '#2c3e50',
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont,, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    header {
-      text-align: center;
-      padding: 40px 0;
-      border-bottom: 1px solid #eee;
-      margin-bottom: 40px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      color: #2c3e50;
-    }
-    .subtitle {
-      font-size: 1.2rem;
-      color: #7f8c8d;
-    }
-    .pricing {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin: 40px 0;
-    }
-    .price-card {
-      border: 2px solid #eee;
-      border-radius: 10px;
-      padding: 30px;
-      text-align: center;
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-    .price-card:hover {
-      border-color: #3498db;
-      transform: translateY(-5px);
-    }
-    .price-card.premium {
-      border-color: #f39c12;
-      background: linear-gradient(135deg, #fff 0%, #fff9f0 100%);
-    }
-    .price-tier {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-    .price {
-      font-size: 2rem;
-      color: #2c3e50;
-      margin-bottom: 20px;
-    }
-    .features {
-      list-style: none;
-      margin-bottom: 30px;
-    }
-    .features li {
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .btn {
-      display: inline-block;
-      padding: 12px 30px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    .btn-free {
-      background: #ecf0f1;
-      color: #2c3e50;
-    }
-    .btn-premium {
-      background: #f39c12;
-      color: white;
-    }
-    .btn-copy {
-      background: #3498db;
-      color: white;
-      padding: 8px 16px;
-      font-size: 0.9rem;
-      margin-top: 10px;
-    }
-    .btn-copy:hover {
-      background: #2980b9;
-    }
-    .btn-copy.copied {
-      background: #2ecc71;
-    }
-    .install-info {
-      background: #f8f9fa;
-      border-radius: 10px;
-      padding: 20px;
-      margin: 40px 0;
-    }
-    .install-info h2 {
-      margin-bottom: 15px;
-    }
-    code {
-      background: #e0e0e0;
-      padding: 2px 6px;
-      border-radius: 3px;
-      font-family: monospace;
-    }
     .code-block {
       background: #2c3e50;
       color: #ecf0f1;
-      padding: 15px;
-      border-radius: 5px;
+      padding: 1rem;
+      border-radius: 0.5rem;
       overflow-x: auto;
       position: relative;
-      margin: 15px 0;
+      margin: 1rem 0;
     }
-    .skills-list {
-      margin: 40px 0;
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 1001;
     }
-    .skill-item {
-      border: 1px solid #eee;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 15px;
-      transition: border-color 0.3s;
-    }
-    .skill-item:hover {
-      border-color: #3498db;
-    }
-    .skill-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .skill-name {
-      font-size: 1.3rem;
-      font-weight: bold;
-    }
-    .badge {
-      display: inline-block;
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: bold;
+    .toast.show {
+      opacity: 1;
     }
     .badge-free {
       background: #2ecc71;
@@ -168,216 +52,153 @@
       background: #e74c3c;
       color: white;
     }
-    .tag {
-      display: inline-block;
-      background: #ecf0f1;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-size: 0.8rem;
-      margin-right: 5px;
-      margin-top: 5px;
-    }
-    .skill-description {
-      margin: 10px 0;
-    }
-    .skill-description .en {
-      color: #7f8c8d;
-      font-size: 0.9rem;
-      margin-top: 5px;
-    }
-    .install-actions {
-      margin-top: 15px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .install-command {
-      flex: 1;
-      min-width: 250px;
-    }
-    footer {
-      text-align: center;
-      padding: 40px 0;
-      border-top: 1px solid #eee;
-      margin-top: 60px;
-      color: #7f8c8d;
-    }
-    /* Modal */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-overlay.active {
-      display: flex;
-    }
-    .modal {
-      background: white;
-      border-radius: 10px;
-      padding: 30px;
-      max-width: 500px;
-      width: 90%;
-      position: relative;
-    }
-    .modal-close {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #7f8c8d;
-    }
-    .modal-close:hover {
-      color: #333;
-    }
-    .modal h2 {
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    .qr-container {
-      text-align: center;
-      margin: 20px 0;
-    }
-    .qr-container img {
-      max-width: 250px;
-      border: 1px solid #eee;
-      padding: 10px;
-      border-radius: 10px;
-    }
-    .qr-placeholder {
-      border: 2px dashed #ddd;
-      border-radius: 10px;
-      padding: 50px 20px;
-      text-align: center;
-      color: #999;
-    }
-    .payment-info {
-      text-align: center;
-      margin-top: 20px;
-      line-height: 1.8;
-    }
-    .toast {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #333;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 5px;
-      opacity: 0;
-      transition: opacity 0.3s;
-      z-index: 1001;
-    }
-    .toast.show {
-      opacity: 1;
-    }
-    .how-it-works {
-      background: #e8f4f8;
-      border-radius: 10px;
-      padding: 20px;
-      margin: 40px 0;
-    }
-    .how-it-works h2 {
-      margin-bottom: 15px;
-    }
-    .how-it-works ol {
-      margin-left: 20px;
-    }
-    .how-it-works li {
-      padding: 8px 0;
-    }
   </style>
 </head>
-<body>
-  <header>
-    <h1>🍱 SkillHub</h1>
-    <p class="subtitle">精选 OpenClaw / ArkClaw 技能仓库，让你的 AI 助理更强大</p>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-8 text-center">
+      <h1 class="text-4xl font-bold text-dark mb-2">🍱 SkillHub</h1>
+      <p class="text-xl text-gray-500">精选 OpenClaw / ArkClaw 技能仓库，让你的 AI 助理更强大</p>
+    </div>
   </header>
 
-  <section class="pricing">
-    <div class="price-card" onclick="scrollToInstall()">
-      <div class="price-tier">免费</div>
-      <div class="price">¥0</div>
-      <ul class="features">
-        <li>✓ 下载所有免费技能</li>
-        <li>✓ OpenClaw 自动发现</li>
-        <li>✓ 永久更新</li>
-      </ul>
-      <a href="#install" class="btn btn-free">开始使用</a>
-    </div>
-    <div class="price-card premium" onclick="openModal()">
-      <div class="price-tier">会员</div>
-      <div class="price">¥19<span style="font-size: 1rem;">/月</span></div>
-      <ul class="features">
-        <li>✓ 所有免费技能</li>
-        <li>✓ 会员专享精选技能</li>
-        <li>✓ 优先获取更新</li>
-        <li>✓ 技能使用答疑</li>
-        <li>✓ 技能定制优先处理</li>
-      </ul>
-      <button class="btn btn-premium" onclick="openModal()">立即订阅</button>
-    </div>
-  </section>
+  <main class="container mx-auto px-4 py-8">
+    <!-- Pricing Cards -->
+    <section class="max-w-4xl mx-auto mb-12">
+      <h2 class="text-2xl font-bold text-center mb-8">选择适合你的方案</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Free Tier -->
+        <div class="bg-white rounded-xl shadow-md p-8 border-2 border-gray-200 hover:border-secondary transition-all duration-300 hover:-translate-y-1">
+          <div class="text-center">
+            <h3 class="text-xl font-bold mb-4">免费版</h3>
+            <div class="text-4xl font-bold text-dark mb-6">¥0<span class="text-lg text-gray-500">/永久</span></div>
+            <ul class="text-left mb-8 space-y-3">
+              <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 下载所有免费技能</li>
+              <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> OpenClaw 自动发现</li>
+              <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 永久更新</li>
+            </ul>
+            <a href="#install" class="inline-block bg-gray-200 hover:bg-gray-300 text-dark px-6 py-3 rounded-lg font-bold transition-colors">开始使用</a>
+          </div>
+        </div>
 
-  <section class="how-it-works">
-    <h2>📖 如何使用</h2>
-    <ol>
-      <li>OpenClaw / ArkClaw 用户直接在终端添加源，就能搜索发现技能</li>
-      <li>免费技能可以直接安装，会员技能需要订阅会员才能使用</li>
-      <li>订阅后扫码付款，联系作者获取会员权限，即可安装会员技能</li>
-      <li>添加源后，每次搜索都会自动从这里发现新技能，不需要再来网站</li>
-    </ol>
-  </section>
-
-  <section class="install-info" id="install">
-    <h2>🚀 一键添加到你的 OpenClaw</h2>
-    <p>在你的终端执行以下命令，即可添加这个 Skill 源：</p>
-    <div class="code-block">
-      <code id="add-command">npx skills source add https://Sxyman.github.io/skill-hub-website/index.json</code>
-      <button class="btn btn-copy" onclick="copyToClipboard('add-command', this)">一键复制</button>
-    </div>
-    <p>添加后，你就可以在 OpenClaw 中直接搜索这里的技能了：</p>
-    <div class="code-block">
-      <code>npx skills find [关键词]</code>
-      <button class="btn btn-copy" onclick="copyToClipboard(document.querySelectorAll('.code-block code')[1], this)">一键复制</button>
-    </div>
-  </section>
-
-  <section class="skills-list">
-    <h2>📚 技能列表</h2>
-    <div id="skills-container"></div>
-  </section>
-
-  <footer>
-    <p>© <span id="year"></span> SkillHub. Powered by OpenClaw.</p>
-  </footer>
-
-  <!-- Modal for QR Code -->
-  <div class="modal-overlay" id="qr-modal" onclick="closeModal(event)">
-    <div class="modal">
-      <button class="modal-close" onclick="closeModal()">&times;</button>
-      <h2>💳 订阅会员</h2>
-      <p>扫码支付 ¥19/月，获取所有会员专享技能：</p>
-      <div class="qr-container">
-        <!-- 在这里替换成你的收款二维码 -->
-        <div class="qr-placeholder">
-          [请在此处放置你的收款二维码]
+        <!-- Premium Tier -->
+        <div class="bg-white rounded-xl shadow-md p-8 border-2 border-primary bg-gradient-to-br from-white to-orange-50 hover:border-primary transition-all duration-300 hover:-translate-y-1">
+          <div class="text-center">
+            <span class="inline-block bg-primary text-white px-3 py-1 rounded-full text-sm font-bold mb-4">推荐</span>
+            <h3 class="text-xl font-bold mb-4">会员版</h3>
+            <div class="text-4xl font-bold text-dark mb-6">¥19<span class="text-lg text-gray-500">/月</span></div>
+            <ul class="text-left mb-8 space-y-3">
+              <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 所有免费技能</li>
+              <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 会员专享精选技能</li>
+              <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 优先获取更新</li>
+              <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 技能使用答疑</li>
+              <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 技能定制优先处理</li>
+            </ul>
+            <button onclick="openSubscribeModal()" class="inline-block bg-primary hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-bold transition-colors">立即订阅</button>
+          </div>
         </div>
       </div>
-      <div class="payment-info">
-        <p>支付完成后，请联系作者开通权限</p>
-        <p>开通后你就可以安装所有会员专享技能了</p>
+    </section>
+
+    <!-- How It Works -->
+    <section class="max-w-4xl mx-auto mb-12 bg-blue-50 rounded-xl p-8">
+      <h2 class="text-2xl font-bold mb-4">📖 使用流程</h2>
+      <ol class="list-decimal ml-6 space-y-2">
+        <li class="py-2">OpenClaw / ArkClaw 用户添加本源，就能在搜索时自动发现技能</li>
+        <li class="py-2">免费技能可以直接安装，会员技能需要订阅会员</li>
+        <li class="py-2">扫码支付后自动获取会员 Token，配置后即可使用</li>
+        <li class="py-2">添加源后，每次搜索都会自动发现新技能，无需重复访问网站</li>
+      </ol>
+    </section>
+
+    <!-- Install Instructions -->
+    <section id="install" class="max-w-4xl mx-auto mb-12 bg-white rounded-xl shadow-sm p-8">
+      <h2 class="text-2xl font-bold mb-4">🚀 一键添加到你的 OpenClaw</h2>
+      <p class="mb-4">在你的终端执行以下命令，即可添加这个 Skill 源：</p>
+      <div class="code-block">
+        <code id="add-command">npx skills source add https://Sxyman.github.io/skill-hub-website/index.json</code>
+        <button onclick="copyToClipboard('add-command', this)" class="mt-3 bg-secondary hover:bg-blue-600 text-white px-4 py-2 rounded font-bold text-sm">一键复制</button>
+      </div>
+      <p class="mb-4 mt-6">添加后，你就可以在 OpenClaw 中直接搜索这里的技能了：</p>
+      <div class="code-block">
+        <code>npx skills find [关键词]</code>
+        <button onclick="copyToClipboard(this.previousElementSibling.firstChild, this)" class="mt-3 bg-secondary hover:bg-blue-600 text-white px-4 py-2 rounded font-bold text-sm">一键复制</button>
+      </div>
+    </section>
+
+    <!-- Skills List -->
+    <section class="max-w-4xl mx-auto mb-12">
+      <h2 class="text-2xl font-bold mb-6">📚 技能列表</h2>
+      <div id="skills-container" class="space-y-4"></div>
+    </section>
+  </main>
+
+  <footer class="bg-white border-t py-8 mt-12">
+    <div class="container mx-auto px-4 text-center text-gray-500">
+      <p>© <span id="year"></span> SkillHub. Powered by OpenClaw.</p>
+    </div>
+  </footer>
+
+  <!-- Subscribe Modal -->
+  <div id="subscribe-modal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center">
+    <div class="bg-white rounded-xl max-w-md w-full mx-4 p-6 relative">
+      <button onclick="closeSubscribeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+      <h2 class="text-2xl font-bold mb-4 text-center">💳 订阅会员</h2>
+      
+      <div id="step-1" class="block">
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-2">邮箱地址（用于接收通知）</label>
+          <input type="email" id="user-email" placeholder="your@email.com" class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-2">选择套餐</label>
+          <div class="space-y-2">
+            <label class="flex items-center p-3 border rounded-lg cursor-pointer">
+              <input type="radio" name="package" value="30" data-price="19" checked class="mr-3">
+              <div>
+                <div class="font-bold">月卡</div>
+                <div class="text-sm text-gray-500">30天会员权限 ¥19</div>
+              </div>
+            </label>
+            <label class="flex items-center p-3 border rounded-lg cursor-pointer">
+              <input type="radio" name="package" value="365" data-price="99" class="mr-3">
+              <div>
+                <div class="font-bold">年卡</div>
+                <div class="text-sm text-gray-500">365天会员权限 ¥99（省 ¥128）</div>
+              </div>
+            </label>
+          </div>
+        </div>
+        <button onclick="createOrder()" class="w-full bg-primary hover:bg-orange-600 text-white py-3 rounded-lg font-bold">创建订单</button>
+      </div>
+
+      <div id="step-2" class="hidden">
+        <div class="text-center mb-4">
+          <p class="mb-4">请扫描下方二维码付款</p>
+          <div id="qrcode-container" class="mb-4"></div>
+          <p class="text-sm text-gray-500">金额：<span id="payment-amount"></span> 元</p>
+        </div>
+        <div class="flex space-x-2">
+          <button onclick="checkOrder()" class="flex-1 bg-secondary hover:bg-blue-600 text-white py-3 rounded-lg font-bold">查询支付状态</button>
+        </div>
+        <div id="status-message" class="mt-4 text-center"></div>
+      </div>
+
+      <div id="step-3" class="hidden">
+        <div class="text-center">
+          <div class="text-3xl mb-4">✅ 支付成功</div>
+          <p class="mb-4">你的会员 Token 已生成，请复制并保存：</p>
+          <div class="code-block">
+            <code id="member-token"></code>
+            <button onclick="copyToClipboard('member-token', this)" class="mt-3 bg-secondary hover:bg-blue-600 text-white px-4 py-2 rounded font-bold text-sm">复制 Token</button>
+          </div>
+          <div class="mt-4 text-sm text-gray-600">
+            <p>在你的 OpenClaw 环境变量中添加：</p>
+            <p class="font-mono">export SKILLHUB_TOKEN=&lt;你的Token&gt;</p>
+            <p class="mt-2">添加后即可正常使用会员专享技能</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -385,19 +206,85 @@
   <div class="toast" id="toast">已复制到剪贴板！</div>
 
   <script>
-    // Modal functions
-    function openModal() {
-      document.getElementById('qr-modal').classList.add('active');
-    }
-    function closeModal(e) {
-      if (e && e.target.id !== 'qr-modal') return;
-      document.getElementById('qr-modal').classList.remove('active');
-    }
-    function scrollToInstall() {
-      document.getElementById('install').scrollIntoView({ behavior: 'smooth' });
+    const API_BASE = 'https://your-server-domain.com'; // 用户需要替换成自己的服务器地址
+
+    function openSubscribeModal() {
+      document.getElementById('subscribe-modal').classList.remove('hidden');
+      document.getElementById('subscribe-modal').classList.add('flex');
+      showStep(1);
     }
 
-    // Copy to clipboard
+    function closeSubscribeModal() {
+      document.getElementById('subscribe-modal').classList.add('hidden');
+      document.getElementById('subscribe-modal').classList.remove('flex');
+    }
+
+    function showStep(step) {
+      document.getElementById('step-1').classList.add('hidden');
+      document.getElementById('step-2').classList.add('hidden');
+      document.getElementById('step-3').classList.add('hidden');
+      document.getElementById('step-' + step).classList.remove('hidden');
+      document.getElementById('step-' + step).classList.add('block');
+    }
+
+    async function createOrder() {
+      const email = document.getElementById('user-email').value;
+      const package = document.querySelector('input[name="package"]:checked');
+      const days = parseInt(package.value);
+      const price = parseInt(package.dataset.price);
+
+      if (!email || !email.includes('@')) {
+        showToast('请输入正确的邮箱地址');
+        return;
+      }
+
+      try {
+        const res = await fetch(API_BASE + '/api/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, amount: price, days })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          document.getElementById('payment-amount').textContent = price;
+          // 使用二维码生成服务生成微信支付二维码
+          // 这里你需要替换成实际的微信支付链接
+          const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=weixin://wxpay/bizpayurl?pr=${data.orderId}`;
+          document.getElementById('qrcode-container').innerHTML = `<img src="${qrUrl}" alt="付款码" class="mx-auto border rounded-lg p-2">`;
+          window.currentOrderId = data.orderId;
+          window.currentToken = data.token;
+          showStep(2);
+        } else {
+          showToast('创建订单失败，请重试');
+        }
+      } catch (e) {
+        showToast('网络错误，请检查服务器地址配置');
+      }
+    }
+
+    async function checkOrder() {
+      const statusEl = document.getElementById('status-message');
+      try {
+        const res = await fetch(API_BASE + `/api/order-status?orderId=${window.currentOrderId}`);
+        const data = await res.json();
+
+        if (!data.exists) {
+          statusEl.innerHTML = '<p class="text-yellow-600">订单不存在，请重试</p>';
+          return;
+        }
+
+        if (data.status === 'pending') {
+          statusEl.innerHTML = '<p class="text-blue-600">等待支付中，请完成付款后点击查询</p>';
+        } else if (data.status === 'paid') {
+          document.getElementById('member-token').textContent = window.currentToken;
+          showStep(3);
+        }
+      } catch (e) {
+        statusEl.innerHTML = '<p class="text-red-600">查询失败，请重试</p>';
+      }
+    }
+
     function copyToClipboard(element, button) {
       let text = '';
       if (typeof element === 'string') {
@@ -411,7 +298,6 @@
           button.classList.add('copied');
           button.textContent = '已复制';
           setTimeout(() => {
-            button.classList.remove('copied');
             button.textContent = '一键复制';
           }, 2000);
         }
@@ -436,47 +322,39 @@
         const container = document.getElementById('skills-container');
         data.skills.forEach(skill => {
           const div = document.createElement('div');
-          div.className = 'skill-item';
+          div.className = 'bg-white rounded-xl shadow-sm p-6 border border-gray-200 hover:border-secondary transition-colors';
+          
           const badgeClass = skill.tier === 'free' ? 'badge-free' : 'badge-premium';
           const badgeText = skill.tier === 'free' ? '免费' : '会员';
           
           let tagsHtml = '';
           skill.tags.forEach(tag => {
-            tagsHtml += `<span class="tag">${tag}</span>`;
+            tagsHtml += `<span class="inline-block bg-gray-100 px-2 py-1 rounded-full text-xs mr-1 mb-1">${tag}</span>`;
           });
-
-          // 提取中英文描述
-          let descCn = skill.description;
-          let descEn = '';
-          if (skill.descriptionEn) {
-            descCn = skill.description;
-            descEn = skill.descriptionEn;
-          }
           
-          // 安装命令
           const installCommand = `npx skills add ${window.location.origin} -s ${skill.name} -g -y`;
           
           div.innerHTML = `
-            <div class="skill-header">
-              <span class="skill-name">${skill.name}</span>
-              <span class="badge ${badgeClass}">${badgeText}</span>
+            <div class="flex justify-between items-start mb-3 flex-wrap gap-2">
+              <span class="text-xl font-bold">${skill.name}</span>
+              <span class="px-3 py-1 rounded-full text-xs font-bold ${badgeClass}">${badgeText}</span>
             </div>
-            <div class="skill-description">
-              <p class="cn">${descCn}</p>
-              ${descEn ? `<p class="en">${descEn}</p>` : ''}
+            <div class="mb-4">
+              <p class="text-gray-800 mb-1">${skill.description}</p>
+              ${skill.descriptionEn ? `<p class="text-gray-500 text-sm">${skill.descriptionEn}</p>` : ''}
             </div>
-            <div>
+            <div class="mb-4">
               ${tagsHtml}
             </div>
-            <div class="install-actions">
-              <div class="install-command">
-                <div>命令行安装：</div>
-                <div class="code-block">
-                  <code id="install-${skill.name}">${installCommand}</code>
-                  <button class="btn btn-copy" onclick="copyToClipboard('install-${skill.name}', this)">一键复制</button>
-                </div>
+            <div>
+              <div class="text-sm font-medium mb-2">命令行安装：</div>
+              <div class="code-block">
+                <code id="install-${skill.name}">${installCommand}</code>
+                <button onclick="copyToClipboard('install-${skill.name}', this)" class="mt-3 bg-secondary hover:bg-blue-600 text-white px-4 py-2 rounded font-bold text-sm">一键复制</button>
               </div>
-              ${skill.tier === 'premium' ? `<button class="btn btn-premium" onclick="openModal()">需要会员订阅</button>` : ''}
+              ${skill.tier === 'premium' ? `
+                <button onclick="openSubscribeModal()" class="mt-3 bg-primary hover:bg-orange-600 text-white px-4 py-2 rounded font-bold">需要会员订阅</button>
+              ` : ''}
             </div>
           `;
           container.appendChild(div);
@@ -489,17 +367,17 @@
     // 当前年份
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // 点击蒙层关闭模态框
-    document.getElementById('qr-modal').addEventListener('click', function(e) {
+    // 点击蒙层关闭
+    document.getElementById('subscribe-modal').addEventListener('click', function(e) {
       if (e.target === this) {
-        closeModal();
+        closeSubscribeModal();
       }
     });
 
-    // ESC 关闭模态框
+    // ESC 关闭
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
-        closeModal();
+        closeSubscribeModal();
       }
     });
   </script>
