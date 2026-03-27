@@ -1,15 +1,16 @@
 {
   "version": 1,
-  "updatedAt": "2026-03-27T06:09:44.246Z",
+  "updatedAt": "2026-03-27T06:52:18.952Z",
   "skills": [
     {
       "name": "feishu-batch-ops",
-      "description": "飞书批量操作工具 - 批量导入通讯录、批量创建文档、批量处理日程",
-      "descriptionEn": "Feishu batch operations tool - batch import contacts, batch create docs, batch process calendar events",
+      "description": "飞书批量操作工具 - 批量导入通讯录、批量创建文档、批量处理日程，需要定制联系作者",
+      "descriptionEn": "Feishu batch operations tool - batch import contacts, create docs, process calendar. Contact author for customization",
       "author": "Sxyman",
       "version": "1.0.0",
       "category": "feishu",
-      "tier": "premium",
+      "tier": "free",
+      "verified": false,
       "tags": [
         "feishu",
         "lark",
@@ -18,23 +19,20 @@
       ],
       "repository": "https://github.com/Sxyman/skill-hub-website",
       "homepage": "https://Sxyman.github.io/skill-hub-website/",
-      "license": "proprietary",
+      "license": "MIT",
       "requirements": null,
       "createdAt": "2026-03-27T00:00:00Z",
-      "price": {
-        "type": "subscription",
-        "tier": "premium"
-      },
       "downloadUrl": "https://github.com/Sxyman/skill-hub-website"
     },
     {
       "name": "image-generate",
-      "description": "使用 AI 模型生成图片，支持直接发送预览到聊天会话",
-      "descriptionEn": "Generate images using AI model, supports direct preview sending to chat",
+      "description": "使用 AI 模型生成图片，支持直接发送预览到聊天会话，开箱即用",
+      "descriptionEn": "Generate images using AI model, supports direct preview sending to chat, ready to use",
       "author": "openclaw",
       "version": "1.0.0",
       "category": "generation",
       "tier": "free",
+      "verified": true,
       "tags": [
         "image",
         "ai",
@@ -49,12 +47,13 @@
     },
     {
       "name": "smart-ocr",
-      "description": "使用 PaddleOCR 从图片和扫描文档中提取文字，支持 100+ 种语言",
-      "descriptionEn": "Extract text from images and scanned documents using PaddleOCR - supports 100+ languages",
+      "description": "使用 PaddleOCR 从图片和扫描文档中提取文字，支持 100+ 种语言，实测可用",
+      "descriptionEn": "Extract text from images and scanned documents using PaddleOCR - supports 100+ languages, tested and working",
       "author": "openclaw",
       "version": "1.0.0",
       "category": "utility",
       "tier": "free",
+      "verified": true,
       "tags": [
         "ocr",
         "text-extraction",
@@ -75,6 +74,7 @@
       "version": "1.0.0",
       "category": "search",
       "tier": "free",
+      "verified": true,
       "tags": [
         "search",
         "web",

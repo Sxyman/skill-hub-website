@@ -6,6 +6,7 @@
   "version": "1.0.0",
   "category": "search",
   "tier": "free",
+  "verified": true,
   "tags": ["search", "web", "privacy"],
   "repository": "https://github.com/openclaw/openclaw",
   "homepage": "https://github.com/openclaw/openclaw",
