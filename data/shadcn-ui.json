@@ -14,7 +14,7 @@
   "tags": ["ui", "tailwind", "react", "components", "frontend", "theme"],
   "features": [
     "🚀 基于 Tailwind CSS，样式自定义非常灵活",
-    "🎨 支持深色模式和完全自定义主题",
+    "🎨 支持深色模式和完全自定义颜色主题",
     "📦 组件可单独复制使用，无需安装整个库",
     "🎯 支持 TypeScript，类型完整",
     "♿ 符合无障碍设计标准"
@@ -27,47 +27,44 @@
     "需要统一设计语言的项目"
   ],
   "requirements": ["React 18+", "Tailwind CSS v3"],
-  "bestPractices": "创建新项目时使用 `npx create-next-app@latest`，然后运行 `npx shadcn-ui@latest init` 初始化，按照向导选择你喜欢的样式和颜色",
-  "themes": [
-    {
-      "name": "Default",
-      "description": "默认蓝色主题，清新专业",
-      "colors": {
-        "background": "white",
-        "foreground": "black",
-        "primary": "blue"
-      },
-      "preview": "https://ui.shadcn.com/opengraph-image.png"
+  "installation": {
+    "step1": {
+      "title": "1. 初始化项目",
+      "command": "npx shadcn-ui@latest init",
+      "description": "在已经存在的 React/Tailwind 项目根目录执行这个命令，按照向导配置"
     },
-    {
-      "name": "Dark",
-      "description": "深色模式，护眼舒适",
-      "colors": {
-        "background": "black",
-        "foreground": "white",
-        "primary": "blue"
-      },
-      "preview": "https://github.com/shadcn-ui/ui/blob/main/apps/www/public/og-dark.jpg?raw=true"
+    "step2": {
+      "title": "2. 添加组件",
+      "command": "npx shadcn-ui@latest add button",
+      "description": "把需要的组件添加到项目，会自动下载到 components/ui 目录"
     },
-    {
-      "name": "Orange",
-      "description": "温暖橙色，活泼热情",
-      "colors": {
-        "background": "white",
-        "foreground": "black",
-        "primary": "orange"
-      }
-    },
-    {
-      "name": "Green",
-      "description": "自然绿色，清新宁静",
-      "colors": {
-        "background": "white",
-        "foreground": "black",
-        "primary": "green"
-      }
+    "step3": {
+      "title": "3. 在代码中使用",
+      "code": "import { Button } from \"@/components/ui/button\"\n\nexport default function MyComponent() {\n  return <Button>Click me</Button>\n}"
     }
-  ],
-  "example": "// 1. 初始化\n// npx shadcn-ui@latest init\n\n// 2. 添加按钮组件\n// npx shadcn-ui@latest add button\n\n// 3. 使用\nimport { Button } from \"@/components/ui/button\"\n\nexport default function Home() {\n  return (\n    <Button onClick={() => console.log('Clicked')}>\n      Click me\n    </Button>\n  )\n}",
+  },
+  "faq": [
+    {
+      "question": "Q: 如何自定义主题颜色/风格？给我几个主流风格配色参考",
+      "originalProblem": "我想要在网站增加一些风格展示，我不知道想要哪种风格，希望提供一些好看主流的风格选择",
+      "failedAttempt": "第一次只给了几个纯色块展示，用户无法知道应用到网站是什么效果，不满意",
+      "solution": "shadcn-ui 支持在 `tailwind.config.ts` 中自定义颜色，这里给你几种主流设计风格参考，可以直接复制使用：\n\n**1. 极简蓝色（默认风格）** - 专业清爽，适合大多数网站\n```typescript\n// tailwind.config.ts\nexport default {\n  theme: {\n    colors: {\n      primary: colors.blue[600],\n      background: '#ffffff',\n      foreground: '#000000',\n    }\n  }\n}\n```\n\n**2. 温暖橙色** - 活泼热情，适合内容/电商网站\n```typescript\ncolors: {\n  primary: colors.orange[500],\n  background: '#fffbf5',\n  foreground: '#1c1917',\n}\n```\n\n**3. 自然绿色** - 清新健康，适合生活/环保产品\n```typescript\ncolors: {\n  primary: colors.green[500],\n  background: '#f8faf8',\n  foreground: '#14532d',\n}\n```\n\n**4. 深空暗色** - 代码/开发者工具，护眼\n```typescript\ncolors: {\n  primary: colors.blue[500],\n  background: '#09090b',\n  foreground: '#fafafa',\n}\n```\n\n配置完成后执行 `npx shadcn-ui@latest add [component]` 自动应用新主题，所有组件会自动变色",
+      "conclusion": "用户需要的不是纯色块预览，而是**可直接复制的配置代码 + 风格说明**，这样用户拿到就能用"
+    },
+    {
+      "question": "Q: 官方预览图片打不开怎么办？",
+      "originalProblem": "直接链接到 GitHub 图片，国内访问可能超时打不开",
+      "solution": "直接访问官方网站预览 https://ui.shadcn.com/ ，这里能看到完整的组件和主题效果。如果只是想要主题配色，参考上面 FAQ 的配置直接用就行",
+      "conclusion": "国外资源国内访问不稳定，需要给出替代方案"
+    },
+    {
+      "question": "Q: 为什么我复制组件代码提示找不到模块？",
+      "originalProblem": "复制了示例代码，编译报错找不到 `@/components/ui/button`",
+      "solution": "这是因为 tsconfig.json 没有配置 path alias，添加：\n```json\n// tsconfig.json\n\"compilerOptions\": {\n  \"paths\": {\n    \"@/*\": [\"./*\"]\n  }\n}\n```\n重启 dev server 就好了",
+      "conclusion": "新手容易踩的坑，shadcn-ui 默认需要 path alias，提前告诉用户解决方法"
+    }
+  },
+  "bestPractices": "创建新项目时，推荐使用 `npx create-next-app@latest` 然后运行 `npx shadcn-ui@latest init` 初始化，Next.js + TypeScript + Tailwind + shadcn-ui 是目前最流畅的开发体验",
+  "example": "// 使用按钮组件\nimport { Button } from \"@/components/ui/button\"\n\nexport default function Home() {\n  return (\n    <Button onClick={() => console.log('Clicked')}>\n      Click me\n    </Button>\n  )\n}",
   "createdAt": "2026-03-27T00:00:00Z"
 }

@@ -281,6 +281,72 @@
             `;
           }
           
+          // 分步安装教程
+          if (skill.installation) {
+            extraInfo += `
+              <div class="mb-3">
+                <div class="text-sm font-medium mb-2">📥 分步安装：</div>
+            `;
+            Object.keys(skill.installation).forEach(key => {
+              const step = skill.installation[key];
+              extraInfo += `
+                <div class="mb-2 p-2 border-l-4 border-blue-500">
+                  <div class="font-medium">${step.title}</div>
+                  ${step.command ? `
+                    <div class="code-block mt-1">
+                      <button class="copy-icon-btn" onclick="copyToClipboardRaw(\`${step.command}\`, this)" title="复制">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                      </button>
+                      <code>${step.command}</code>
+                    </div>
+                  ` : ''}
+                  ${step.description ? `<p class="text-sm text-gray-600 mt-1">${step.description}</p>` : ''}
+                  ${step.code ? `
+                    <div class="code-block mt-1">
+                      <button class="copy-icon-btn" onclick="copyToClipboardRaw(\`${step.code.replace(/`/g, '\\`')}\`, this)" title="复制">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                      </button>
+                      <code>${step.code}</code>
+                    </div>
+                  ` : ''}
+                </div>
+              `;
+            });
+            extraInfo += `
+              </div>
+            `;
+          }
+          
+          // FAQ / 常见问题解决 - 这是最有价值的部分
+          if (skill.faq && skill.faq.length > 0) {
+            extraInfo += `
+              <div class="mb-3">
+                <div class="text-sm font-medium mb-2">❓ 常见问题解答（踩坑记录）：</div>
+                <div class="space-y-3">
+            `;
+            skill.faq.forEach(item => {
+              extraInfo += `
+                <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                  <div class="font-medium text-gray-800 mb-1">${item.question}</div>
+                  ${item.originalProblem ? `<div class="text-xs text-orange-600 mb-2">💔 问题还原：${item.originalProblem}</div>` : ''}
+                  ${item.failedAttempt ? `<div class="text-xs text-orange-600 mb-2">❌ 错误尝试：${item.failedAttempt}</div>` : ''}
+                  <div class="text-sm text-gray-700 whitespace-pre-line">${item.solution}</div>
+                  ${item.conclusion ? `<div class="text-xs text-green-600 mt-2">✅ 结论：${item.conclusion}</div>` : ''}
+                </div>
+              `;
+            });
+            extraInfo += `
+                </div>
+              </div>
+            `;
+          }
+          
           // 最佳实践
           if (skill.bestPractices) {
             extraInfo += `
@@ -289,42 +355,6 @@
                 <p class="text-gray-700 text-sm">${skill.bestPractices}</p>
               </div>
             `;
-          }
-          
-          // 主题预览
-          if (skill.themes && skill.themes.length > 0) {
-            extraInfo += `
-              <div class="mb-3">
-                <div class="text-sm font-medium mb-2">🎨 支持主题风格：</div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-            `;
-            skill.themes.forEach(theme => {
-              let colorStyle = `background-color: ${theme.colors.primary === 'blue' ? '#3b82f6' : theme.colors.primary === 'orange' ? '#f97316' : theme.colors.primary === 'green' ? '#22c55e' : theme.colors.primary};`;
-              extraInfo += `
-                <div class="border rounded-lg overflow-hidden">
-                  <div class="h-8" style="${colorStyle}"></div>
-                  <div class="p-2 text-center">
-                    <div class="font-bold text-sm">${theme.name}</div>
-                    <div class="text-xs text-gray-500">${theme.description}</div>
-                  </div>
-                </div>
-              `;
-            });
-            extraInfo += `
-                </div>
-              </div>
-            `;
-            // 如果有预览图
-            if (skill.themes[0].preview) {
-              extraInfo += `
-                <div class="mb-3">
-                  <div class="text-sm font-medium mb-2">🖼️ 官方预览：</div>
-                  <a href="${skill.repository}" target="_blank" class="block border rounded-lg overflow-hidden">
-                    <img src="${skill.themes[0].preview}" alt="Preview" class="w-full">
-                  </a>
-                </div>
-              `;
-            }
           }
           
           // 示例代码
