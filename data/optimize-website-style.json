@@ -1,0 +1,97 @@
+{
+  "name": "optimize-website-style",
+  "description": "帮你一键优化网站整体风格，自动搜索主流设计风格，选择风格后自动完成前端界面改造",
+  "descriptionEn": "Help you optimize website style automatically, search popular design styles, auto complete frontend UI transformation after you choose",
+  "author": "Sxyman",
+  "repository": "https://github.com/Sxyman/skill-hub-website",
+  "homepage": "https://Sxyman.github.io/skill-hub-website/",
+  "version": "1.0.0",
+  "category": "frontend",
+  "tier": "scene",
+  "verified": true,
+  "stars": 0,
+  "license": "MIT",
+  "tags": ["frontend", "style", "design", "optimization", "ui"],
+  "problemDescription": "很多人自己做好网站后，界面很丑不知道怎么优化，不知道主流有哪些好看的风格，不知道怎么调教 AI 一步步改造，浪费很多时间",
+  "features": [
+    "🔍 自动搜索当前主流网站设计风格",
+    "🎨 给你展示多种风格选项，选择你喜欢的",
+    "🛠️ 自动调用 shadcn-ui 技能，按照选定风格改造整个网站界面",
+    "✅ 帮你踩过坑了，遇到常见问题直接给你解决方案，不用自己试错",
+    "⚡ 用户一句话，自动完成全部流程"
+  ],
+  "workflow": [
+    "用户说：\"帮我优化网站风格\"",
+    "技能自动调用 web-search 搜索当前主流设计风格",
+    "整理出几种常见风格给用户选择",
+    "用户选好风格，技能自动拼装提问给 shadcn-ui",
+    "shadcn-ui 自动完成代码改造",
+    "遇到常见错误，技能自带解决方案，自动修复"
+  ],
+  "faq": [
+    {
+      "question": "Q: 为什么我想要不同风格，第一次只给了纯色块，不满意？",
+      "originalProblem": "用户想要展示不同网站风格，不知道怎么给 AI 说清楚，一开始只放了颜色块，用户看不到整体效果",
+      "failedAttempt": "只放几个纯色块代表不同颜色主题，用户无法想象整体网站应用后是什么效果，不满意",
+      "solution": "用户需要的是整体风格推荐，不是单纯颜色。正确做法：推荐完整风格概念 + 给可复制的配置代码 + 说明这个风格适合什么类型网站，让用户清楚选择。\n\n```javascript\n// 极简蓝色（默认风格）- 专业清爽，适合大多数网站\nexport default {\n  theme: {\n    colors: {\n      primary: colors.blue[600],\n      background: '#ffffff',\n      foreground: '#000000',\n    }\n  }\n}\n```\n\n你选好风格后，直接复制配置覆盖就行，技能会自动指导 AI 改造",
+      "conclusion": "用户要的是整体风格方案，不是单纯色块预览。给完整可复制代码 + 使用场景说明，用户能更好选择"
+    },
+    {
+      "question": "Q: 为什么复制组件代码提示找不到模块 `@/components/ui/button`？",
+      "originalProblem": "用户按照示例复制了代码，编译报错找不到路径",
+      "failedAttempt": "只告诉用户重新安装，没说根本原因",
+      "solution": "这是因为 tsconfig.json 没有配置 path alias，添加这段配置就好了：\n```json\n// tsconfig.json\n\"compilerOptions\": {\n  \"paths\": {\n    \"@/*\": [\"./*\"]\n  }\n}\n```\n重启 dev server 就能用了",
+      "conclusion": "这是 shadcn-ui 默认配置要求，新手容易踩坑，提前说清楚解决方法就不用浪费时间"
+    },
+    {
+      "question": "Q: 官方预览图片GitHub 加载不出来怎么办？",
+      "originalProblem": "国内网络访问 GitHub 图片经常超时",
+      "failedAttempt": "继续链接图片，用户打不开",
+      "solution": "直接建议用户访问官方网站预览 https://ui.shadcn.com/ ，这里能正常打开，不用看 GitHub 图片",
+      "conclusion": "国外资源国内访问不稳定，提前给替代方案，用户不用卡住"
+    }
+  ],
+  "compositeUsage": {
+    "description": "这个技能需要组合其他技能一起工作",
+    "workflow": [
+      {
+        "step": "1. 用户提问",
+        "content": "\"帮我优化网站风格\""
+      },
+      {
+        "step": "2. 自动搜索",
+        "content": "技能自动调用 web-search 找主流风格"
+      },
+      {
+        "step": "3. 用户选择",
+        "content": "用户选择喜欢的风格"
+      },
+      {
+        "step": "4. "Auto",
+        "content": "自动调用 shadcn-ui 技能完成改造"
+      }
+    ],
+    "example": "```\n// 一句话搞定\n帮我优化网站风格，我的网站现在不好看\n```\n"
+  },
+  "howToAsk": [
+    {
+      "scene": "优化现有网站风格",
+      "example": "```\n帮我优化网站风格，我的网站做出来很丑，你帮我改造一下\n```\n"
+    },
+    {
+      "scene": "更换主题颜色",
+      "example": "```\n帮我把网站主题改成温暖橙色风格，用 optimize-website-style 技能\n```\n"
+    },
+    {
+      "scene": "总结提问技巧",
+      "tips": [
+        "✓ 说明你的问题：\"我的网站不好看\"",
+        "✓ 说清楚你想要什么感觉：\"想要现代简约风格\"",
+        "✓ 直接让技能处理，不用一步步说"
+      ]
+    }
+  ],
+  "bestPractices": "用户只需要说清楚问题，技能自动组合搜索、选择、改造全流程，你不用管怎么调用子技能，技能会处理好",
+  "example": "// 技能已经写好了完整流程，用户只要一句话\noptimize-website-style",
+  "createdAt": "2026-03-27T00:00:00Z"
+}
