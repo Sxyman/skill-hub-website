@@ -68,10 +68,32 @@
     }
   ],
   "bestPractices": "创建新项目时，推荐使用 `npx create-next-app@latest` 然后运行 `npx shadcn-ui@latest init` 初始化，Next.js + TypeScript + Tailwind + shadcn-ui 是目前最流畅的开发体验",
+  "compositeUsage": {
+    "description": "shadcn-ui 经常和其他技能组合使用，完成更复杂的任务",
+    "workflow": [
+      {
+        "step": "1. 用户需求",
+        "content": "\"帮我换一个更现代的网站风格\""
+      },
+      {
+        "step": "2. 自动搜索",
+        "content": "调用 `web-search` 技能查找当前主流前端网站设计风格"
+      },
+      {
+        "step": "3. 用户选择",
+        "content": "用户从搜索结果中选择喜欢的风格（比如极简蓝色风）"
+      },
+      {
+        "step": "4. 自动改造",
+        "content": "调用 `shadcn-ui` 技能，按照选定风格重新设计网站界面"
+      }
+    ],
+    "example": "```\n// 用户一句话\n帮我换一个流行的现代风格，你搜索一下现在主流的网站设计风格，选一个适合我的，然后用 shadcn-ui 改造\n\n// AI 自动完成：\n1. 调用 web-search 查找主流风格 → 2. 给你选 → 3. 用 shadcn-ui 输出改造代码\n```"
+  },
   "howToAskAI": [
     {
       "scene": "重新设计网站页面风格",
-      "example": "```\n帮我使用 shadcn-ui 重新设计当前网站首页，要求：\n1. 使用深蓝色主题，专业风格\n2. 导航栏在顶部，英雄区居中，卡片列表栅格布局\n3. 页脚放版权信息\n4. 每个技能卡片要有悬停效果\n```\n就是这个问题，我之前做的不好，现在用户可以照着这个提问了\n"
+      "example": "```\n帮我使用 shadcn-ui 重新设计当前网站首页，要求：\n1. 使用深蓝色主题，专业风格\n2. 导航栏在顶部，英雄区居中，卡片列表栅格布局\n3. 页脚放版权信息\n4. 每个技能卡片要有悬停效果\n```\n"
     },
     {
       "scene": "新增一个页面组件",
