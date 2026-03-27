@@ -1,0 +1,18 @@
+{
+  "name": "feishu-batch-ops",
+  "description": "飞书批量操作工具 - 批量导入通讯录、批量创建文档、批量处理日程",
+  "author": "your-name",
+  "version": "1.0.0",
+  "category": "feishu",
+  "tier": "premium",
+  "tags": ["feishu", "lark", "batch", "automation"],
+  "repository": "https://your-domain.com/repos/feishu-batch-ops.git",
+  "homepage": "https://your-domain.com/skills/feishu-batch-ops",
+  "license": "proprietary",
+  "requirements": null,
+  "createdAt": "2026-03-27T00:00:00Z",
+  "price": {
+    "type": "subscription",
+    "tier": "premium"
+  }
+}

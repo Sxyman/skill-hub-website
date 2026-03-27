@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillHub - 精选 OpenClaw 技能仓库</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      padding: 40px 0;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 40px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+      color: #7f8c8d;
+    }
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    .price-card {
+      border: 2px solid #eee;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .price-card:hover {
+      border-color: #3498db;
+      transform: translateY(-5px);
+    }
+    .price-card.premium {
+      border-color: #f39c12;
+      background: linear-gradient(135deg, #fff 0%, #fff9f0 100%);
+    }
+    .price-tier {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .price {
+      font-size: 2rem;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+    .features {
+      list-style: none;
+      margin-bottom: 30px;
+    }
+    .features li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .btn-free {
+      background: #ecf0f1;
+      color: #2c3e50;
+    }
+    .btn-premium {
+      background: #f39c12;
+      color: white;
+    }
+    .install-info {
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 40px 0;
+    }
+    .install-info h2 {
+      margin-bottom: 15px;
+    }
+    code {
+      background: #e0e0e0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+    pre {
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .skills-list {
+      margin: 40px 0;
+    }
+    .skill-item {
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 15px;
+    }
+    .skill-item:hover {
+      border-color: #3498db;
+    }
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .skill-name {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    .badge-free {
+      background: #2ecc71;
+      color: white;
+    }
+    .badge-premium {
+      background: #e74c3c;
+      color: white;
+    }
+    .badge-member {
+      background: #f39c12;
+      color: white;
+    }
+    .tag {
+      display: inline-block;
+      background: #ecf0f1;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      margin-right: 5px;
+      margin-top: 5px;
+    }
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid #eee;
+      margin-top: 60px;
+      color: #7f8c8d;
+    }
+    .qr-code {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .qr-code img {
+      max-width: 200px;
+      border: 1px solid #eee;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🍱 SkillHub</h1>
+    <p class="subtitle">精选 OpenClaw 技能仓库，让你的 AI 助理更强大</p>
+  </header>
+
+  <section class="pricing">
+    <div class="price-card">
+      <div class="price-tier">免费</div>
+      <div class="price">¥0</div>
+      <ul class="features">
+        <li>✓ 下载所有免费技能</li>
+        <li>✓ 官方 OpenClaw 自动发现</li>
+        <li>✓ 基础更新</li>
+      </ul>
+      <a href="#install" class="btn btn-free">开始使用</a>
+    </div>
+    <div class="price-card premium">
+      <div class="price-tier">会员</div>
+      <div class="price">¥19<span style="font-size: 1rem;">/月</span></div>
+      <ul class="features">
+        <li>✓ 所有免费技能</li>
+        <li>✓ 会员专享精选技能</li>
+        <li>✓ 优先获取更新</li>
+        <li>✓ 技能使用答疑</li>
+        <li>✓ 技能定制优先处理</li>
+      </ul>
+      <a href="#subscribe" class="btn btn-premium">立即订阅</a>
+    </div>
+  </section>
+
+  <section class="install-info" id="install">
+    <h2>🚀 一键添加到你的 OpenClaw</h2>
+    <p>在你的终端执行以下命令，即可添加这个 Skill 源：</p>
+    <pre>npx skills source add YOUR_DOMAIN/path/index.json</pre>
+    <p>添加后，你就可以在 OpenClaw 中直接搜索这里的技能了：</p>
+    <pre>npx skills find [关键词]</pre>
+  </section>
+
+  <section class="skills-list">
+    <h2>📚 技能列表</h2>
+    <div id="skills-container"></div>
+  </section>
+
+  <section class="install-info" id="subscribe">
+    <h2>💳 订阅会员</h2>
+    <p>扫码订阅会员，获取全部精选技能：</p>
+    <div class="qr-code">
+      <!-- 在这里替换成你的收款码 -->
+      <p>[请在此处放置你的收款二维码]</p>
+    </div>
+    <p>订阅后请联系我获取会员权限，你就可以下载所有会员专享技能了。</p>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> SkillHub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // 动态加载技能列表
+    fetch('./index.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('skills-container');
+        data.skills.forEach(skill => {
+          const div = document.createElement('div');
+          div.className = 'skill-item';
+          const badgeClass = skill.tier === 'free' ? 'badge-free' : 'badge-premium';
+          const badgeText = skill.tier === 'free' ? '免费' : '会员';
+          
+          let tagsHtml = '';
+          skill.tags.forEach(tag => {
+            tagsHtml += `<span class="tag">${tag}</span>`;
+          });
+          
+          div.innerHTML = `
+            <div class="skill-header">
+              <span class="skill-name">${skill.name}</span>
+              <span class="badge ${badgeClass}">${badgeText}</span>
+            </div>
+            <p>${skill.description}</p>
+            <div>
+              ${tagsHtml}
+            </div>
+          `;
+          container.appendChild(div);
+        });
+      })
+      .catch(err => {
+        console.error('Failed to load skills:', err);
+      });
+
+    // 当前年份
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

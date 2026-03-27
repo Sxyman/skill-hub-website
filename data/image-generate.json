@@ -1,0 +1,14 @@
+{
+  "name": "image-generate",
+  "description": "Generate images using AI model, supports direct preview sending to chat",
+  "author": "openclaw",
+  "version": "1.0.0",
+  "category": "generation",
+  "tier": "free",
+  "tags": ["image", "ai", "generation"],
+  "repository": "https://github.com/openclaw/openclaw",
+  "homepage": "https://github.com/openclaw/openclaw",
+  "license": "Apache-2.0",
+  "requirements": null,
+  "createdAt": "2026-03-27T00:00:00Z"
+}

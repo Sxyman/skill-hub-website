@@ -1,0 +1,14 @@
+{
+  "name": "smart-ocr",
+  "description": "Extract text from images and scanned documents using PaddleOCR - supports 100+ languages",
+  "author": "openclaw",
+  "version": "1.0.0",
+  "category": "utility",
+  "tier": "free",
+  "tags": ["ocr", "text-extraction", "image"],
+  "repository": "https://github.com/openclaw/openclaw",
+  "homepage": "https://github.com/openclaw/openclaw",
+  "license": "Apache-2.0",
+  "requirements": "paddleocr",
+  "createdAt": "2026-03-27T00:00:00Z"
+}

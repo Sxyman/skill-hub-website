@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "updatedAt": "2026-03-27T02:26:21.771Z",
+  "skills": [
+    {
+      "name": "feishu-batch-ops",
+      "description": "飞书批量操作工具 - 批量导入通讯录、批量创建文档、批量处理日程",
+      "author": "your-name",
+      "version": "1.0.0",
+      "category": "feishu",
+      "tier": "premium",
+      "tags": [
+        "feishu",
+        "lark",
+        "batch",
+        "automation"
+      ],
+      "repository": "https://your-domain.com/repos/feishu-batch-ops.git",
+      "homepage": "https://your-domain.com/skills/feishu-batch-ops",
+      "license": "proprietary",
+      "requirements": null,
+      "createdAt": "2026-03-27T00:00:00Z",
+      "price": {
+        "type": "subscription",
+        "tier": "premium"
+      },
+      "downloadUrl": "https://your-domain.com/repos/feishu-batch-ops.git"
+    },
+    {
+      "name": "image-generate",
+      "description": "Generate images using AI model, supports direct preview sending to chat",
+      "author": "openclaw",
+      "version": "1.0.0",
+      "category": "generation",
+      "tier": "free",
+      "tags": [
+        "image",
+        "ai",
+        "generation"
+      ],
+      "repository": "https://github.com/openclaw/openclaw",
+      "homepage": "https://github.com/openclaw/openclaw",
+      "license": "Apache-2.0",
+      "requirements": null,
+      "createdAt": "2026-03-27T00:00:00Z",
+      "downloadUrl": "https://github.com/openclaw/openclaw"
+    },
+    {
+      "name": "smart-ocr",
+      "description": "Extract text from images and scanned documents using PaddleOCR - supports 100+ languages",
+      "author": "openclaw",
+      "version": "1.0.0",
+      "category": "utility",
+      "tier": "free",
+      "tags": [
+        "ocr",
+        "text-extraction",
+        "image"
+      ],
+      "repository": "https://github.com/openclaw/openclaw",
+      "homepage": "https://github.com/openclaw/openclaw",
+      "license": "Apache-2.0",
+      "requirements": "paddleocr",
+      "createdAt": "2026-03-27T00:00:00Z",
+      "downloadUrl": "https://github.com/openclaw/openclaw"
+    },
+    {
+      "name": "web-search",
+      "description": "Privacy-respecting metasearch using your local SearXNG instance. Search the web, images, news, and more without external API dependencies.",
+      "author": "openclaw",
+      "version": "1.0.0",
+      "category": "search",
+      "tier": "free",
+      "tags": [
+        "search",
+        "web",
+        "privacy"
+      ],
+      "repository": "https://github.com/openclaw/openclaw",
+      "homepage": "https://github.com/openclaw/openclaw",
+      "license": "Apache-2.0",
+      "requirements": null,
+      "createdAt": "2026-03-27T00:00:00Z",
+      "downloadUrl": "https://github.com/openclaw/openclaw"
+    }
+  ],
+  "total": 4
+}

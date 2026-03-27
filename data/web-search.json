@@ -1,0 +1,14 @@
+{
+  "name": "web-search",
+  "description": "Privacy-respecting metasearch using your local SearXNG instance. Search the web, images, news, and more without external API dependencies.",
+  "author": "openclaw",
+  "version": "1.0.0",
+  "category": "search",
+  "tier": "free",
+  "tags": ["search", "web", "privacy"],
+  "repository": "https://github.com/openclaw/openclaw",
+  "homepage": "https://github.com/openclaw/openclaw",
+  "license": "Apache-2.0",
+  "requirements": null,
+  "createdAt": "2026-03-27T00:00:00Z"
+}
