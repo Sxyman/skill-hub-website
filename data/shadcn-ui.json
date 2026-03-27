@@ -40,7 +40,7 @@
     },
     "step3": {
       "title": "3. 在代码中使用",
-      "code": "import { Button } from \"@/components/ui/button\"\n\nexport default function MyComponent() {\n  return <Button>Click me</Button>\n}"
+      "code": "import { Button } from \"@/components/ui/button\"\nexport default function MyComponent() {\n  return &lt;Button&gt;Click me&lt;/Button&gt;\n}"
     }
   },
   "faq": [
@@ -63,8 +63,8 @@
       "solution": "这是因为 tsconfig.json 没有配置 path alias，添加：\n```json\n// tsconfig.json\n\"compilerOptions\": {\n  \"paths\": {\n    \"@/*\": [\"./*\"]\n  }\n}\n```\n重启 dev server 就好了",
       "conclusion": "新手容易踩的坑，shadcn-ui 默认需要 path alias，提前告诉用户解决方法"
     }
-  },
+  ],
   "bestPractices": "创建新项目时，推荐使用 `npx create-next-app@latest` 然后运行 `npx shadcn-ui@latest init` 初始化，Next.js + TypeScript + Tailwind + shadcn-ui 是目前最流畅的开发体验",
-  "example": "// 使用按钮组件\nimport { Button } from \"@/components/ui/button\"\n\nexport default function Home() {\n  return (\n    <Button onClick={() => console.log('Clicked')}>\n      Click me\n    </Button>\n  )\n}",
+  "example": "// 使用按钮组件\nimport { Button } from \"@/components/ui/button\"\n\nexport default function Home() {\n  return (\n    &lt;Button onClick={() =&gt; console.log('Clicked')}&gt;\n      Click me\n    &lt;/Button&gt;\n  )\n}",
   "createdAt": "2026-03-27T00:00:00Z"
 }
