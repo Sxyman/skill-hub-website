@@ -68,6 +68,30 @@
     }
   ],
   "bestPractices": "创建新项目时，推荐使用 `npx create-next-app@latest` 然后运行 `npx shadcn-ui@latest init` 初始化，Next.js + TypeScript + Tailwind + shadcn-ui 是目前最流畅的开发体验",
+  "howToAskAI": [
+    {
+      "scene": "重新设计网站页面风格",
+      "example": "```\n帮我使用 shadcn-ui 重新设计当前网站首页，要求：\n1. 使用深蓝色主题，专业风格\n2. 导航栏在顶部，英雄区居中，卡片列表栅格布局\n3. 页脚放版权信息\n4. 每个技能卡片要有悬停效果\n```\n就是这个问题，我之前做的不好，现在用户可以照着这个提问了\n"
+    },
+    {
+      "scene": "新增一个页面组件",
+      "example": "```\n帮我用 shadcn-ui 写一个联系表单页面，包含：\n- 姓名输入框\n- 邮箱输入框  \n- 消息文本域\n- 提交按钮\n- 使用我当前的蓝色主题\n```\n"
+    },
+    {
+      "scene": "调整主题配色",
+      "example": "```\n帮我把 shadcn-ui 主题改成温暖橙色风格，修改 tailwind.config.ts 配置，给出完整代码\n```\n"
+    },
+    {
+      "scene": "总结提问技巧",
+      "tips": [
+        "✅ 一定要说清楚你想要**什么组件**",
+        "✅ 一定要说明你的**颜色主题偏好**",
+        "✅ 一定要说明**布局结构**（哪儿放导航，哪儿放内容）",
+        "✅ 如果是修改，要说清楚**改哪里**，**改成什么样**",
+        "✅ 直接给出**参考效果**，AI 更容易理解"
+      ]
+    }
+  ],
   "example": "// 使用按钮组件\nimport { Button } from \"@/components/ui/button\"\n\nexport default function Home() {\n  return (\n    &lt;Button onClick={() =&gt; console.log('Clicked')}&gt;\n      Click me\n    &lt;/Button&gt;\n  )\n}",
   "createdAt": "2026-03-27T00:00:00Z"
 }

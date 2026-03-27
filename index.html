@@ -357,6 +357,43 @@
             `;
           }
           
+          // 如何向 AI 提问
+          if (skill.howToAskAI && skill.howToAskAI.length > 0) {
+            extraInfo += `
+              <div class="mb-3 p-3 bg-green-50 rounded-lg border border-green-200">
+                <div class="text-sm font-medium mb-2">🎤 如何向 AI 提问才能用好 ${skill.name}？</div>
+            `;
+            skill.howToAskAI.forEach(item => {
+              extraInfo += `
+                <div class="mb-3">
+                  <div class="text-sm font-medium text-gray-700 mb-1">${item.scene}：</div>
+                  <div class="code-block">
+                    <button class="copy-icon-btn" onclick="copyToClipboardRaw(\`${item.example.replace(/`/g, '\\`')}\`, this)" title="复制">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                    </button>
+                    <code>${item.example}</code>
+                  </div>
+                </div>
+              `;
+            });
+            // 提问技巧
+            if (skill.howToAskAI[skill.howToAskAI.length - 1].tips) {
+              const tips = skill.howToAskAI[skill.howToAskAI.length - 1].tips;
+              extraInfo += `
+                <div class="mt-2">
+                  <div class="text-sm font-medium text-gray-700 mb-1">💡 提问技巧：</div>
+                  <ul class="ml-4 list-disc text-sm text-gray-600">
+                    ${tips.map(t => `<li>${t}</li>`).join('')}
+                  </ul>
+                </div>
+              `;
+            }
+            extraInfo += `</div>`;
+          }
+          
           // 示例代码
           if (skill.example) {
             // 转义示例代码中的引号
