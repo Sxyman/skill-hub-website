@@ -1,0 +1,55 @@
+{
+  "name": "wecom-contact-lookup",
+  "description": "企业微信通讯录成员查询，基于 MCP 协议，按姓名/别名筛选匹配，获取成员 userid",
+  "descriptionEn": "WeChat Work contact lookup, search members by name/alias, get userid",
+  "author": "OpenClaw",
+  "repository": "https://github.com/Sxyman/skill-hub-website",
+  "homepage": "https://Sxyman.github.io/skill-hub-website/",
+  "version": "1.0.0",
+  "category": "wecom",
+  "verified": true,
+  "stars": 0,
+  "license": "MIT",
+  "tags": ["wecom", "wechat-work", "contact", "addressbook", "search"],
+  "scene": {
+    "problem": "需要给企业微信成员分配任务、邀请会议，但记不住对方的 userid，在企业微信客户端一个个找太麻烦，想要快速查找获取成员信息",
+    "whoShouldUse": "使用企业微信的团队成员，需要频繁查找成员信息",
+    "whenToUse": [
+      "需要查找成员的 userid 用于 API 调用",
+      "模糊查找成员姓名，获取联系方式",
+      "批量查找多个成员信息"
+    ],
+    "whenNotToUse": [
+      "不使用企业微信（不适用）",
+      "你已经知道 userid，不需要查找"
+    ]
+  },
+  "showcase": {
+    "features": [
+      "🔍 支持按姓名、别名模糊搜索",
+      "📋 返回 userid、姓名、别名，信息完整",
+      "⚡ 快速本地筛选匹配，结果准确",
+      "🔒 只返回你有权限查看的成员，符合权限控制"
+    ],
+    "result": "你只需要输入关键词，比如找\"张三\"，技能快速返回匹配的成员列表，给你需要的 userid，直接用于后续操作，不用你打开企业微信慢慢找。"
+  },
+  "usage": {
+    "examples": [
+      {
+        "scene": "查找成员",
+        "query": "帮我用 wecom-contact-lookup 查找姓张的成员"
+      },
+      {
+        "scene": "获取 userid",
+        "query": "帮我找张三的 userid，我需要邀请他参加会议"
+      }
+    ],
+    "tips": [
+      "✓ 关键词越准确，结果越匹配",
+      "✓ 支持拼音、前缀模糊匹配",
+      "✓ 如果结果太多，可以补充关键词缩小范围",
+      "✓ 仅返回你权限范围内可见的成员"
+    ]
+  },
+  "createdAt": "2026-03-31T00:00:00Z"
+}

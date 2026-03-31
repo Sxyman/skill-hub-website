@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SkillHub - 场景化技能，一句话解决问题</title>
+  <title>SkillHub - OpenClaw 场景化技能导航站</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ctext x='4' y='18' font-size='18'%3E🚀%3C/text%3E%3C/svg%3E">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -224,20 +225,82 @@
           
           const installCommand = `npx skills add ${window.location.origin} -s ${skill.name} -g -y`;
           
-          let extraInfo = '';
-          // 只保留问题描述，去掉所有其他内容
-          if (skill.problemDescription) {
-            extraInfo += `
-              <div class="mb-4">
-                <p class="text-gray-700">${skill.problemDescription}</p>
-              </div>
-            `;
-          }
-          
           // 手动安装信息
           const manualInstall = skill.repository ? `
             <div class="mt-2 text-xs text-gray-500">手动克隆：<code class="bg-gray-100 px-1 rounded">git clone ${skill.repository}</code></div>
           ` : '';
+          
+          // Scene 场景描述模块
+          let sceneHtml = '';
+          if (skill.scene) {
+            sceneHtml = `
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2 text-purple-700">🎯 场景描述</h3>
+                <p class="text-gray-700 mb-2">${skill.scene.problem}</p>
+                ${skill.scene.whoShouldUse ? `
+                  <div class="mt-2">
+                    <p class="text-sm font-medium text-gray-600">适合用户：</p>
+                    <p class="text-sm text-gray-700">${skill.scene.whoShouldUse}</p>
+                  </div>
+                ` : ''}
+                ${skill.scene.whenToUse && skill.scene.whenToUse.length > 0 ? `
+                  <div class="mt-2">
+                    <p class="text-sm font-medium text-gray-600">适用场景：</p>
+                    <ul class="text-sm text-gray-700 list-disc ml-5">
+                      ${skill.scene.whenToUse.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                  </div>
+                ` : ''}
+              </div>
+            `;
+          }
+          
+          // Showcase 案例展示/效果说明模块
+          let showcaseHtml = '';
+          if (skill.showcase) {
+            showcaseHtml = `
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2 text-blue-700">✨ 效果展示</h3>
+                ${skill.showcase.features && skill.showcase.features.length > 0 ? `
+                  <ul class="text-gray-700 list-disc ml-5 mb-2">
+                    ${skill.showcase.features.map(item => `<li>${item}</li>`).join('')}
+                  </ul>
+                ` : ''}
+                ${skill.showcase.result ? `
+                  <p class="text-gray-700 mt-1">${skill.showcase.result}</p>
+                ` : ''}
+              </div>
+            `;
+          }
+          
+          // Usage 使用方式模块
+          let usageHtml = '';
+          if (skill.usage) {
+            usageHtml = `
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2 text-green-700">📖 使用方式</h3>
+                ${skill.usage.examples && skill.usage.examples.length > 0 ? `
+                  <div class="mb-2">
+                    <p class="text-sm font-medium text-gray-600">示例对话：</p>
+                    ${skill.usage.examples.map(ex => `
+                      <div class="bg-gray-50 p-2 rounded my-1">
+                        <p class="text-xs text-gray-500">${ex.scene}：</p>
+                        <p class="text-sm text-gray-700 italic">"${ex.query}"</p>
+                      </div>
+                    `).join('')}
+                  </div>
+                ` : ''}
+                ${skill.usage.tips && skill.usage.tips.length > 0 ? `
+                  <div class="mt-2">
+                    <p class="text-sm font-medium text-gray-600">使用提示：</p>
+                    <ul class="text-sm text-gray-700 list-disc ml-5">
+                      ${skill.usage.tips.map(item => `<li>${item}</li>`).join('')}
+                    </ul>
+                  </div>
+                ` : ''}
+              </div>
+            `;
+          }
           
           div.innerHTML = `
             <div class="flex justify-between items-start mb-4 flex-wrap gap-2">
@@ -248,10 +311,14 @@
               <p class="text-gray-800 mb-1">${skill.description}</p>
               ${skill.descriptionEn ? `<p class="text-gray-500 text-sm">${skill.descriptionEn}</p>` : ''}
             </div>
-            ${extraInfo}
             <div class="mb-2">
               ${tagsHtml}
             </div>
+            <hr class="my-4 border-gray-100">
+            ${sceneHtml}
+            ${showcaseHtml}
+            ${usageHtml}
+            <hr class="my-4 border-gray-100">
             <div>
               <div class="text-sm font-medium mb-2">一键安装（OpenClaw / ArkClaw）：</div>
                 <div class="code-block">

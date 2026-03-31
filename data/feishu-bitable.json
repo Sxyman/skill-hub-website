@@ -1,0 +1,58 @@
+{
+  "name": "feishu-bitable",
+  "description": "飞书多维表格（Bitable）完整管理工具，支持创建/查询/编辑表格、字段、记录、视图",
+  "descriptionEn": "Feishu Bitable complete management tool, supports create/query/edit tables, fields, records and views",
+  "author": "OpenClaw",
+  "repository": "https://github.com/Sxyman/skill-hub-website",
+  "homepage": "https://Sxyman.github.io/skill-hub-website/",
+  "version": "1.0.0",
+  "category": "feishu",
+  "verified": true,
+  "stars": 0,
+  "license": "MIT",
+  "tags": ["feishu", "lark", "bitable", "multidimensional", "table", "database"],
+  "scene": {
+    "problem": "需要通过 AI 自动操作飞书多维表格，创建数据表、新增记录、查询数据，但 API 复杂参数多，记不住，每次都要查文档，效率太低",
+    "whoShouldUse": "使用飞书的团队成员，需要自动化处理多维表格数据，不想记复杂 API 的开发者",
+    "whenToUse": [
+      "需要创建新的多维表格或数据表",
+      "需要批量新增或修改记录",
+      "需要查询筛选表格数据",
+      "需要管理表格字段和视图",
+      "想让 AI 自动帮你操作飞书表格"
+    ],
+    "whenNotToUse": [
+      "不使用飞书（不适用）",
+      "只是查看表格，直接在飞书客户端打开更方便"
+    ]
+  },
+  "showcase": {
+    "features": [
+      "📊 支持 27 种字段类型，覆盖所有飞书表格字段",
+      "🔍 支持高级筛选和排序查询",
+      "📝 批量创建、更新、删除记录",
+      "👁️ 支持视图管理，创建不同的视图展示",
+      "✅ 你只需要说需求，技能帮你调用正确的 API"
+    ],
+    "result": "你只需要用自然语言说你想做什么，比如\"帮我在这个多维表格新增一个日期字段\"，技能自动识别需求，调用正确的 API 完成操作，不需要查飞书 API 文档，节省你大量时间。"
+  },
+  "usage": {
+    "examples": [
+      {
+        "scene": "创建新数据表",
+        "query": "帮我在这个多维表格创建一个新数据表，名称是项目进度，包含字段：项目名称（文本）、负责人（人员）、开始日期（日期）、进度（数字）、状态（单选）"
+      },
+      {
+        "scene": "批量添加记录",
+        "query": "帮我给这个表格批量添加以下几条记录：[列表在这里]"
+      }
+    ],
+    "tips": [
+      "✓ 说明你要操作的表格和数据表",
+      "✓ 字段类型说清楚，技能会帮你配置",
+      "✓ 筛选条件用自然描述，比如\"找出进度大于 50% 的项目\"",
+      "✓ 如果有权限问题，需要先完成飞书授权"
+    ]
+  },
+  "createdAt": "2026-03-31T00:00:00Z"
+}

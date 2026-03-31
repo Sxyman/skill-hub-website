@@ -1,0 +1,58 @@
+{
+  "name": "image-generate",
+  "description": "使用内置 AI 模型生成图片，支持直接发送图片预览到聊天会话，快速生成需要的图片",
+  "descriptionEn": "Generate images using built-in AI model, send preview directly to chat session, generate images quickly",
+  "author": "OpenClaw",
+  "repository": "https://github.com/Sxyman/skill-hub-website",
+  "homepage": "https://Sxyman.github.io/skill-hub-website/",
+  "version": "1.0.0",
+  "category": "ai",
+  "verified": true,
+  "stars": 0,
+  "license": "MIT",
+  "tags": ["image", "generate", "ai", "drawing", "art"],
+  "scene": {
+    "problem": "需要快速生成一张示例图片、示意图、封面图，但不会画图，打开专业软件太麻烦，等待生成时间太长，想要快速得到结果",
+    "whoShouldUse": "需要快速生成示例图片的作者，写文章需要配图，做演示需要示意图",
+    "whenToUse": [
+      "写文章需要一张示例配图",
+      "做演示需要一张示意图",
+      "快速验证你的创意想法",
+      "需要一张封面图",
+      "不想打开复杂的绘图软件"
+    ],
+    "whenNotToUse": [
+      "需要高清商用大图（建议用专业服务）",
+      "需要修改已有图片（用其他工具）"
+    ]
+  },
+  "showcase": {
+    "features": [
+      "⚡ 快速生成，直接在聊天中预览",
+      "🖼️ 支持多种风格和尺寸",
+      "🔒 本地生成，隐私保护",
+      "📤 直接输出可分享的图片文件",
+      "🎨 基于 Stable Diffusion 模型，质量有保障"
+    ],
+    "result": "你只需要用文字描述你想要的图片，几分钟就能生成好，直接在聊天中看到预览，可以下载保存，省去打开复杂软件的麻烦，快速满足你的配图需求。"
+  },
+  "usage": {
+    "examples": [
+      {
+        "scene": "生成博客封面图",
+        "query": "帮我生成一张博客封面图，主题是 AI 生成代码，现代科技风格，蓝色主色调，用 image-generate"
+      },
+      {
+        "scene": "生成示意图",
+        "query": "帮我生成一张技能架构示意图，简洁风格，用 image-generate"
+      }
+    ],
+    "tips": [
+      "✓ 描述清晰你的主题和颜色偏好",
+      "✓ 说明风格：极简、科技、复古、手绘等",
+      "✓ 如果效果不满意，可以调整描述重新生成",
+      "✓ 用途说明：封面图/示意图/头像/壁纸，效果更好"
+    ]
+  },
+  "createdAt": "2026-03-31T00:00:00Z"
+}

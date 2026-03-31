@@ -1,0 +1,57 @@
+{
+  "name": "wecom-meeting-create",
+  "description": "创建企业微信预约会议，支持设置会议主题、时间、参会人，自动生成会议链接",
+  "descriptionEn": "Create WeChat Work scheduled meeting, supports setting topic, time, attendees, auto generate meeting link",
+  "author": "OpenClaw",
+  "repository": "https://github.com/Sxyman/skill-hub-website",
+  "homepage": "https://Sxyman.github.io/skill-hub-website/",
+  "version": "1.0.0",
+  "category": "wecom",
+  "verified": true,
+  "stars": 0,
+  "license": "MIT",
+  "tags": ["wecom", "wechat-work", "meeting", "create", "schedule"],
+  "scene": {
+    "problem": "需要在企业微信创建预约会议，要打开客户端一步步点，邀请参会人也要一个个选，想让 AI 帮你快速创建",
+    "whoShouldUse": "企业微信用户，经常需要创建会议的管理员和组织者",
+    "whenToUse": [
+      "需要提前预约会议",
+      "需要邀请多个参会人",
+      "需要自动生成会议链接",
+      "想快速创建会议不用手动点界面"
+    ],
+    "whenNotToUse": [
+      "不使用企业微信（不适用）",
+      "立即开始的快速会议（用客户端更快）"
+    ]
+  },
+  "showcase": {
+    "features": [
+      "📅 创建预约会议，支持设置开始结束时间",
+      "👥 批量添加参会人，支持通过姓名查找",
+      "🔗 自动生成会议链接和 ID",
+      "📧 自动通知参会人",
+      "⚡ 一句话创建，不用手动操作界面"
+    ],
+    "result": "你只需要说\"帮我创建一个明天下午 2 点的项目评审会议，邀请张三李四\"，技能自动帮你创建好会议，返回会议链接，你直接分享给参会人就行，节省你手动操作的时间。"
+  },
+  "usage": {
+    "examples": [
+      {
+        "scene": "创建项目会议",
+        "query": "帮我创建一个项目评审会议，明天下午 2 点到 3 点半，邀请张三李四王五参加，主题是前端架构评审"
+      },
+      {
+        "scene": "创建周会",
+        "query": "帮我创建每周一上午 10 点的团队周会，持续一小时，邀请部门所有人"
+      }
+    ],
+    "tips": [
+      "✓ 说清楚会议主题、时间、参会人",
+      "✓ 参会人可以用姓名，技能自动查找 userid",
+      "✓ 需要设置会议地点可以直接说明",
+      "✓ 创建成功会返回会议链接，可以直接分享"
+    ]
+  },
+  "createdAt": "2026-03-31T00:00:00Z"
+}
