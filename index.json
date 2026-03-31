@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-03-28T12:13:37.367Z",
+  "updatedAt": "2026-03-31T04:35:39.492Z",
   "skills": [
     {
       "name": "optimize-website-style",
@@ -11,7 +11,6 @@
       "homepage": "https://Sxyman.github.io/skill-hub-website/",
       "version": "1.0.0",
       "category": "frontend",
-      "tier": "scene",
       "verified": true,
       "stars": 0,
       "license": "MIT",
@@ -22,80 +21,46 @@
         "optimization",
         "ui"
       ],
-      "problemDescription": "很多人自己做好网站后，界面很丑不知道怎么优化，不知道主流有哪些好看的风格，不知道怎么调教 AI 一步步改造，浪费很多时间",
-      "features": [
-        "🔍 自动搜索当前主流网站设计风格",
-        "🎨 给你展示多种风格选项，选择你喜欢的",
-        "🛠️ 自动调用 shadcn-ui 技能，按照选定风格改造整个网站界面",
-        "✅ 帮你踩过坑了，遇到常见问题直接给你解决方案，不用自己试错",
-        "⚡ 用户一句话，自动完成全部流程"
-      ],
-      "workflow": [
-        "用户说: \"帮我优化网站风格\"",
-        "技能自动调用 web-search 搜索当前主流设计风格",
-        "整理出几种常见风格给用户选择",
-        "用户选好风格，技能自动拼装提问给 shadcn-ui",
-        "shadcn-ui 自动完成代码改造",
-        "遇到常见错误，技能自带解决方案，自动修复"
-      ],
-      "faq": [
-        {
-          "question": "Q: 为什么我想要不同风格，第一次只给了纯色块，不满意？",
-          "originalProblem": "用户想要展示不同网站风格，不知道怎么给 AI 说清楚，一开始只放了颜色块，用户看不到整体效果",
-          "failedAttempt": "只放几个纯色块代表不同颜色主题，用户无法想象整体网站应用后是什么效果，不满意",
-          "solution": "用户需要的是整体风格推荐，不是单纯颜色。正确做法：推荐完整风格概念 + 给可复制的配置代码 + 说明这个风格适合什么类型网站，让用户清楚选择。\n```javascript\n// 极简蓝色（默认风格）- 专业清爽，适合大多数网站\nexport default {\n  theme: {\n    colors: {\n      primary: colors.blue[600],\n      background: '#ffffff',\n      foreground: '#000000',\n    }\n  }\n}\n```\n\n你选好风格后，直接复制配置覆盖就行，技能会自动指导 AI 改造",
-          "conclusion": "用户要的是整体风格方案，不是单纯色块预览。给完整可复制代码 + 使用场景说明，用户能更好选择"
-        },
-        {
-          "question": "Q: 为什么复制组件代码提示找不到模块 `@/components/ui/button`？",
-          "originalProblem": "用户按照示例复制了代码，编译报错找不到路径",
-          "failedAttempt": "只告诉用户重新安装，没说根本原因",
-          "solution": "这是因为 tsconfig.json 没有配置 path alias，添加这段配置就好了：\n```json\n// tsconfig.json\n\"compilerOptions\": {\n  \"paths\": {\n    \"@/*\": [\"./*\"]\n  }\n}\n```\n重启 dev server 就能用了",
-          "conclusion": "这是 shadcn-ui 默认配置要求，新手容易踩坑，提前说清楚解决方法就不用浪费时间"
-        }
-      ],
-      "compositeUsage": {
-        "description": "这个技能需要组合其他技能一起工作",
-        "workflow": [
+      "scene": {
+        "problem": "很多人自己做好网站后，界面很丑不知道怎么优化，不知道主流有哪些好看的风格，不知道怎么调教 AI 一步步改造，浪费很多时间",
+        "whoShouldUse": "做了网站但界面不好看想优化的开发者，不会设计想快速获得专业风格的初学者，不想一步步调教 AI 想节省时间的用户",
+        "whenToUse": [
+          "网站做好了但看起来很丑，需要整体美化",
+          "想更换主题颜色和设计风格",
+          "不知道现在流行什么设计风格，需要参考推荐",
+          "想让 AI 自动完成改造，不想一步步手动改"
+        ],
+        "whenNotToUse": [
+          "只改某个按钮样式，不需要整体风格改造（建议直接让 AI 改）"
+        ]
+      },
+      "showcase": {
+        "features": [
+          "🔍 自动搜索当前主流网站设计风格",
+          "🎨 给你展示多种风格选项，每种都配完整可复制配置和适用场景说明",
+          "🛠️ 自动调用 shadcn-ui 技能，按照选定风格改造整个网站界面",
+          "⚡ 用户一句话，自动完成全部流程"
+        ],
+        "result": "你只需要说清楚问题和想要的感觉，技能自动帮你搜索风格、给选项、完成改造，几分钟就能获得一个漂亮专业的网站界面，不用自己折腾半小时。"
+      },
+      "usage": {
+        "examples": [
           {
-            "step": "1. 用户提问",
-            "content": "\"帮我优化网站风格\""
+            "scene": "优化现有网站风格",
+            "query": "帮我优化网站风格，我的网站做出来很丑，你帮我改造一下"
           },
           {
-            "step": "2. 自动搜索",
-            "content": "技能自动调用 web-search 找主流风格"
-          },
-          {
-            "step": "3. 用户选择",
-            "content": "用户选择喜欢的风格"
-          },
-          {
-            "step": "4. Auto",
-            "content": "自动调用 shadcn-ui 技能完成改造"
+            "scene": "更换主题颜色",
+            "query": "帮我把网站主题改成温暖橙色风格，用 optimize-website-style 技能"
           }
         ],
-        "example": "```\n// 一句话搞定\n帮我优化网站风格，我的网站现在不好看\n```\n"
+        "tips": [
+          "✓ 说明你的问题：\"我的网站不好看\"",
+          "✓ 说清楚你想要什么感觉：\"想要现代简约风格\"",
+          "✓ 直接让技能处理，不用一步步说",
+          "✓ 如果已经有明确风格，直接说出来更快"
+        ]
       },
-      "howToAsk": [
-        {
-          "scene": "优化现有网站风格",
-          "example": "```\n帮我优化网站风格，我的网站做出来很丑，你帮我改造一下\n```\n"
-        },
-        {
-          "scene": "更换主题颜色",
-          "example": "```\n帮我把网站主题改成温暖橙色风格，用 optimize-website-style 技能\n```\n"
-        },
-        {
-          "scene": "总结提问技巧",
-          "tips": [
-            "✓ 说明你的问题：\"我的网站不好看\"",
-            "✓ 说清楚你想要什么感觉：\"想要现代简约风格\"",
-            "✓ 直接让技能处理，不用一步步说"
-          ]
-        }
-      ],
-      "bestPractices": "用户只需要说清楚问题，技能自动组合搜索、选择、改造全流程，你不用管怎么调用子技能，技能会处理好",
-      "example": "// 技能已经写好了完整流程，用户只要一句话\noptimize-website-style",
       "createdAt": "2026-03-27T00:00:00Z",
       "downloadUrl": "https://github.com/Sxyman/skill-hub-website"
     },
@@ -108,7 +73,6 @@
       "homepage": "https://ui.shadcn.com/",
       "version": "latest",
       "category": "frontend",
-      "tier": "free",
       "verified": true,
       "stars": 65000,
       "license": "MIT",
@@ -120,112 +84,59 @@
         "frontend",
         "theme"
       ],
-      "features": [
-        "🚀 基于 Tailwind CSS，样式自定义非常灵活",
-        "🎨 支持深色模式和完全自定义颜色主题",
-        "📦 组件可单独复制使用，无需安装整个库",
-        "🎯 支持 TypeScript，类型完整",
-        "♿ 符合无障碍设计标准"
-      ],
-      "useCases": [
-        "1. 🚀 快速开发项目首页、列表页、表单页，不需要自己从零写组件样式",
-        "2. 🎨 需要给项目统一设计语言，各个页面风格保持一致",
-        "3. 📝 开发表单页面，需要按钮、输入框、下拉框、复选框等基础组件",
-        "4. 📊 开发后台管理系统，需要模态框、表格、分页菜单等组件",
-        "5. 📱 开发移动端 H5 页面，需要适配不同屏幕的响应式组件",
-        "6. 🎯 基于 Tailwind CSS 开发，但不想自己设计组件样式",
-        "7. 🔧 全栈开发项目，专注业务逻辑，不需要在 UI 设计上花太多时间",
-        "8. 🎨 需要自定义主题颜色，切换深色/浅色模式"
-      ],
-      "requirements": [
-        "React 18+",
-        "Tailwind CSS v3"
-      ],
-      "installation": {
-        "step1": {
-          "title": "1. 初始化项目",
-          "command": "npx shadcn-ui@latest init",
-          "description": "在已经存在的 React/Tailwind 项目根目录执行这个命令，按照向导配置"
-        },
-        "step2": {
-          "title": "2. 添加组件",
-          "command": "npx shadcn-ui@latest add button",
-          "description": "把需要的组件添加到项目，会自动下载到 components/ui 目录"
-        },
-        "step3": {
-          "title": "3. 在代码中使用",
-          "code": "import { Button } from \"@/components/ui/button\"\nexport default function MyComponent() {\n  return &lt;Button&gt;Click me&lt;/Button&gt;\n}"
-        }
+      "scene": {
+        "problem": "开发 React 项目需要很多基础 UI 组件，但自己从零设计样式太浪费时间，也不容易做出专业好看的效果，不同页面风格难以统一",
+        "whoShouldUse": "React 前端开发者，全栈开发者需要快速做界面，想要专业好看的 UI 又不想自己设计，使用 Tailwind CSS 的项目",
+        "whenToUse": [
+          "快速开发项目首页、列表页、表单页，不需要自己从零写组件样式",
+          "需要给项目统一设计语言，各个页面风格保持一致",
+          "开发表单页面，需要按钮、输入框、下拉框、复选框等基础组件",
+          "开发后台管理系统，需要模态框、表格、分页菜单等组件",
+          "开发移动端 H5 页面，需要适配不同屏幕的响应式组件",
+          "基于 Tailwind CSS 开发，但不想自己设计组件样式",
+          "全栈开发项目，专注业务逻辑，不需要在 UI 设计上花太多时间",
+          "需要自定义主题颜色，切换深色/浅色模式"
+        ],
+        "whenNotToUse": [
+          "非 React 项目（不适用）",
+          "不使用 Tailwind CSS 的项目",
+          "只需要一个简单按钮，不需要引入组件库"
+        ]
       },
-      "faq": [
-        {
-          "question": "Q: 如何自定义主题颜色/风格？给我几个主流风格配色参考",
-          "originalProblem": "我想要在网站增加一些风格展示，我不知道想要哪种风格，希望提供一些好看主流的风格选择",
-          "failedAttempt": "第一次只给了几个纯色块展示，用户无法知道应用到网站是什么效果，不满意",
-          "solution": "shadcn-ui 支持在 `tailwind.config.ts` 中自定义颜色，这里给你几种主流设计风格参考，可以直接复制使用：\n\n**1. 极简蓝色（默认风格）** - 专业清爽，适合大多数网站\n```typescript\n// tailwind.config.ts\nexport default {\n  theme: {\n    colors: {\n      primary: colors.blue[600],\n      background: '#ffffff',\n      foreground: '#000000',\n    }\n  }\n}\n```\n\n**2. 温暖橙色** - 活泼热情，适合内容/电商网站\n```typescript\ncolors: {\n  primary: colors.orange[500],\n  background: '#fffbf5',\n  foreground: '#1c1917',\n}\n```\n\n**3. 自然绿色** - 清新健康，适合生活/环保产品\n```typescript\ncolors: {\n  primary: colors.green[500],\n  background: '#f8faf8',\n  foreground: '#14532d',\n}\n```\n\n**4. 深空暗色** - 代码/开发者工具，护眼\n```typescript\ncolors: {\n  primary: colors.blue[500],\n  background: '#09090b',\n  foreground: '#fafafa',\n}\n```\n\n配置完成后执行 `npx shadcn-ui@latest add [component]` 自动应用新主题，所有组件会自动变色",
-          "conclusion": "用户需要的不是纯色块预览，而是**可直接复制的配置代码 + 风格说明**，这样用户拿到就能用"
-        },
-        {
-          "question": "Q: 官方预览图片打不开怎么办？",
-          "originalProblem": "直接链接到 GitHub 图片，国内访问可能超时打不开",
-          "solution": "直接访问官方网站预览 https://ui.shadcn.com/ ，这里能看到完整的组件和主题效果。如果只是想要主题配色，参考上面 FAQ 的配置直接用就行",
-          "conclusion": "国外资源国内访问不稳定，需要给出替代方案"
-        },
-        {
-          "question": "Q: 为什么我复制组件代码提示找不到模块？",
-          "originalProblem": "复制了示例代码，编译报错找不到 `@/components/ui/button`",
-          "solution": "这是因为 tsconfig.json 没有配置 path alias，添加：\n```json\n// tsconfig.json\n\"compilerOptions\": {\n  \"paths\": {\n    \"@/*\": [\"./*\"]\n  }\n}\n```\n重启 dev server 就好了",
-          "conclusion": "新手容易踩的坑，shadcn-ui 默认需要 path alias，提前告诉用户解决方法"
-        }
-      ],
-      "bestPractices": "创建新项目时，推荐使用 `npx create-next-app@latest` 然后运行 `npx shadcn-ui@latest init` 初始化，Next.js + TypeScript + Tailwind + shadcn-ui 是目前最流畅的开发体验",
-      "compositeUsage": {
-        "description": "shadcn-ui 经常和其他技能组合使用，完成更复杂的任务",
-        "workflow": [
+      "showcase": {
+        "features": [
+          "🚀 基于 Tailwind CSS，样式自定义非常灵活",
+          "🎨 支持深色模式和完全自定义颜色主题",
+          "📦 组件可单独复制使用，无需安装整个库",
+          "🎯 支持 TypeScript，类型完整",
+          "♿ 符合无障碍设计标准",
+          "⚡ 零运行时开销，只是组件代码，不增加包体积"
+        ],
+        "result": "你可以快速获得一套专业、一致、现代化的 UI 组件，直接复制就能用，不用自己慢慢设计样式，开发速度提升好几倍，做出来的界面也好看"
+      },
+      "usage": {
+        "examples": [
           {
-            "step": "1. 用户需求",
-            "content": "\"帮我换一个更现代的网站风格\""
+            "scene": "重新设计网站页面风格",
+            "query": "帮我使用 shadcn-ui 重新设计当前网站首页，要求：\n1. 使用深蓝色主题，专业风格\n2. 导航栏在顶部，英雄区居中，卡片列表栅格布局\n3. 页脚放版权信息\n4. 每个技能卡片要有悬停效果"
           },
           {
-            "step": "2. 自动搜索",
-            "content": "调用 `web-search` 技能查找当前主流前端网站设计风格"
+            "scene": "新增一个联系表单页面",
+            "query": "帮我用 shadcn-ui 写一个联系表单页面，包含：\n- 姓名输入框\n- 邮箱输入框  \n- 消息文本域\n- 提交按钮\n- 使用我当前的蓝色主题"
           },
           {
-            "step": "3. 用户选择",
-            "content": "用户从搜索结果中选择喜欢的风格（比如极简蓝色风）"
-          },
-          {
-            "step": "4. 自动改造",
-            "content": "调用 `shadcn-ui` 技能，按照选定风格重新设计网站界面"
+            "scene": "调整主题配色",
+            "query": "帮我把 shadcn-ui 主题改成温暖橙色风格，修改 tailwind.config.ts 配置，给出完整代码"
           }
         ],
-        "example": "```\n// 用户一句话\n帮我换一个流行的现代风格，你搜索一下现在主流的网站设计风格，选一个适合我的，然后用 shadcn-ui 改造\n\n// AI 自动完成：\n1. 调用 web-search 查找主流风格 → 2. 给你选 → 3. 用 shadcn-ui 输出改造代码\n```"
+        "tips": [
+          "✅ 一定要说清楚你想要**什么组件**",
+          "✅ 一定要说明你的**颜色主题偏好**",
+          "✅ 一定要说明**布局结构**（哪儿放导航，哪儿放内容）",
+          "✅ 如果是修改，要说清楚**改哪里**，**改成什么样**",
+          "✅ 直接给出**参考效果**，AI 更容易理解"
+        ]
       },
-      "howToAskAI": [
-        {
-          "scene": "重新设计网站页面风格",
-          "example": "```\n帮我使用 shadcn-ui 重新设计当前网站首页，要求：\n1. 使用深蓝色主题，专业风格\n2. 导航栏在顶部，英雄区居中，卡片列表栅格布局\n3. 页脚放版权信息\n4. 每个技能卡片要有悬停效果\n```\n"
-        },
-        {
-          "scene": "新增一个页面组件",
-          "example": "```\n帮我用 shadcn-ui 写一个联系表单页面，包含：\n- 姓名输入框\n- 邮箱输入框  \n- 消息文本域\n- 提交按钮\n- 使用我当前的蓝色主题\n```\n"
-        },
-        {
-          "scene": "调整主题配色",
-          "example": "```\n帮我把 shadcn-ui 主题改成温暖橙色风格，修改 tailwind.config.ts 配置，给出完整代码\n```\n"
-        },
-        {
-          "scene": "总结提问技巧",
-          "tips": [
-            "✅ 一定要说清楚你想要**什么组件**",
-            "✅ 一定要说明你的**颜色主题偏好**",
-            "✅ 一定要说明**布局结构**（哪儿放导航，哪儿放内容）",
-            "✅ 如果是修改，要说清楚**改哪里**，**改成什么样**",
-            "✅ 直接给出**参考效果**，AI 更容易理解"
-          ]
-        }
-      ],
-      "example": "// 使用按钮组件\nimport { Button } from \"@/components/ui/button\"\n\nexport default function Home() {\n  return (\n    &lt;Button onClick={() =&gt; console.log('Clicked')}&gt;\n      Click me\n    &lt;/Button&gt;\n  )\n}",
       "createdAt": "2026-03-27T00:00:00Z",
       "downloadUrl": "https://github.com/shadcn/ui"
     }
